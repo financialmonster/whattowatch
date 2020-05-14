@@ -20,10 +20,14 @@ const logger = createLogger({
     }
 });
 
-if(process.env.NODE_ENV !== 'production') {
+if(process.env.NODE_ENV !== `production`) {
     middlewares.push(logger);
 }
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(...middlewares)));
+
+if(process.env.NODE_ENV !== `production` && module.hot) {
+    module.hot.accept([`../domains/auth/authReducer.ts`], () => store.replaceReducer(rootReducer));
+}
 
 export default store;

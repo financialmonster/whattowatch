@@ -7,7 +7,7 @@ import { history } from './init/rootReducer';
 import store from './init/store';
 import App from './components/app/App';
 
-ReactDOM.render(
+const renderApp = () => ReactDOM.render(
     <Provider store={store}>
         <Router history={history}>
             <App />
@@ -15,3 +15,9 @@ ReactDOM.render(
     </Provider>,
     document.querySelector(`#root`)
 );
+
+if(module.hot && process.env.NODE_ENV !== `production`) {
+    module.hot.accept(`./components/app/App.tsx`, renderApp);
+}
+
+renderApp();
