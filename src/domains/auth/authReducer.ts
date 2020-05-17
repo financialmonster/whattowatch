@@ -1,8 +1,6 @@
 import { Map } from 'immutable';
 
-type TAuthState = {
-    isLoggedIn: boolean;
-}
+import { TAuthState } from './authTypes';
 
 const initialState: TAuthState = {
     isLoggedIn: false
@@ -10,7 +8,7 @@ const initialState: TAuthState = {
 
 const initialStateImmutable = Map(initialState);
 
-const authReducer = (state = initialStateImmutable) => {
+const authReducer = (state = initialStateImmutable): typeof initialStateImmutable => {
     return state;
 }
 

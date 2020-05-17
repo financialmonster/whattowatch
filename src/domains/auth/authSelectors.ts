@@ -1,7 +1,7 @@
-import { TState } from '../../init/rootReducer';
+import { TState } from '../../types';
 
 const authSelectors = {
-    getIsLoggedIn: (state: TState): boolean | undefined => state.auth.get(`isLoggedIn`) 
+    getIsLoggedIn: (state: TState) => state.auth.get(`isLoggedIn`) 
 }
 
 export default authSelectors;
