@@ -3,11 +3,15 @@ import { combineReducers, createStore } from 'redux';
 
 import store from './store';
 import { history } from './rootReducer';
+import authReducer from '../domains/auth/authReducer';
+import promoReducer from '../domains/promo/promoReducer';
 
 const routerReducer = connectRouter(history);
 
 const referenceRootReducer = combineReducers({
-    router: routerReducer
+    router: routerReducer,
+    auth: authReducer,
+    promo: promoReducer
 });
 
 const referenceStore = createStore(referenceRootReducer);
