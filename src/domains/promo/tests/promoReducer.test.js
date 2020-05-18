@@ -1,7 +1,7 @@
-import { Map } from 'immutable';
+import { Map, fromJS } from 'immutable';
 
-import promoReducer from '../promoReducer';
-import { promoActions } from '../promoActions';
+import promoReducer from 'domains/promo/promoReducer';
+import { promoActions } from 'domains/promo/promoActions';
 
 const initialState = Map({
     promo: Map(),
@@ -25,7 +25,7 @@ describe(`promoReducer:`, () => {
     });
 
     it(`should return right state given action with FETCH_PROMO_SUCCESS type`, () => {
-        const newState = initialState.set(`promo`, Map({fake: true}))
+        const newState = initialState.set(`promo`, fromJS({fake: true}))
                                     .set(`isPromoFetching`, false);
 
         expect(promoReducer(initialState, promoActions.fetchPromoSuccess({fake: true}))).toEqual(newState);

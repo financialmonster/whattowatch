@@ -3,8 +3,8 @@ import { combineReducers, createStore } from 'redux';
 
 import store from './store';
 import { history } from './rootReducer';
-import authReducer from '../domains/auth/authReducer';
-import promoReducer from '../domains/promo/promoReducer';
+import authReducer from 'domains/auth/authReducer';
+import promoReducer from 'domains/promo/promoReducer';
 
 const routerReducer = connectRouter(history);
 

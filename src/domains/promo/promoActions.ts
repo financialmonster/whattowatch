@@ -1,6 +1,6 @@
 import { PromoActionTypes } from './promoConstants';
 import { TPromoActions } from './promoTypes';
-import { TFilm } from '../../types';
+import { TFilm } from 'types';
 
 export const promoActions = {
     fetchPromoRequest: (): TPromoActions => ({ type: PromoActionTypes.FETCH_PROMO_REQUEST }),

@@ -24,7 +24,7 @@ const Promo: FC<TPromoProps> = ({promo}) => {
         <div className="movie-card__wrap">
             <div className="movie-card__info">
                 <div className="movie-card__poster">
-                    <img src={ previewImage } alt={`${name} poster`}  width="218" height="327" />
+                    <img src={previewImage} alt={`${name} poster`} width="218" height="327" />
                 </div>
                 <div className="movie-card__desc">
                     <h2 className="movie-card__title">{ name }</h2>

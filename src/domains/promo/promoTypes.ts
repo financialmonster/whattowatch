@@ -1,7 +1,7 @@
 import { Map } from 'immutable';
 
 import { PromoActionTypes } from './promoConstants';
-import { TFilm } from '../../types';
+import { TFilm } from 'types';
 
 type TFetchPromoRequest = {
     type: typeof PromoActionTypes.FETCH_PROMO_REQUEST

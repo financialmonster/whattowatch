@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Header from '../../components/header/Header';
-import PromoContainer from '../../components/promoContainer/PromoContainer';
+import Header from 'components/header/Header';
+import PromoContainer from 'components/promoContainer/PromoContainer';
 
 const MainPage = () => {
     return (
@@ -18,4 +18,4 @@ const MainPage = () => {
     );
 };
 
-export default React.memo(MainPage);
+export default MainPage;

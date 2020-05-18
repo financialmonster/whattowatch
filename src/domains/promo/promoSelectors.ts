@@ -1,4 +1,4 @@
-import { TState } from '../../types';
+import { TState } from 'types';
 
 const promoSelectors = {
     getIsPromoFetching: (state: TState) => state.promo.get(`isPromoFetching`),

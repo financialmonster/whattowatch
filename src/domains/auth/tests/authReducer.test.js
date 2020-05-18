@@ -1,6 +1,6 @@
 import { Map } from 'immutable';
 
-import authReducer from '../authReducer';
+import authReducer from 'domains/auth/authReducer';
 
 const initialState = Map({
     isLoggedIn: false

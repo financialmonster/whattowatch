@@ -1,4 +1,4 @@
-import { rootReducer } from './init/rootReducer';
+import { rootReducer } from 'init/rootReducer';
 
 export type TFilm = {
     background_color: string;

@@ -1,13 +1,14 @@
 import React, { FC } from 'react';
 
-import Promo from '../promo/Promo';
-import { useFetchPromo } from '../../hooks/useFetchPromo';
+import Promo from 'components/promo/Promo';
+import Spinner from 'components/spinner/Spinner';
+import { useFetchPromo } from 'hooks/useFetchPromo';
 
 const PromoContainer: FC = () => {
     const {isPromoFetching, promoError, promo} = useFetchPromo();
 
     if(isPromoFetching) {
-        return <div>loading...</div>;
+        return <Spinner />;
     }
 
     if(promoError) {

@@ -3,12 +3,12 @@ import { useLocation } from 'react-router-dom';
 import { push } from 'connected-react-router';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Routes } from '../../constants';
-import authSelectors from '../../domains/auth/authSelectors';
+import { Routes } from 'mainConstants';
+import authSelectors from 'domains/auth/authSelectors';
 
 const Header: FC = () => {
-    const path = useLocation().pathname;
-    const isMain = path === Routes.MAIN_PAGE;
+    const {pathname} = useLocation();
+    const isMain = pathname === Routes.MAIN_PAGE;
     const dispatch = useDispatch();
     const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
     

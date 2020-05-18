@@ -1,10 +1,10 @@
 import { put, call } from 'redux-saga/effects';
-
-import { promoActions } from '../promoActions';
-import api from '../../../api';
-import { HttpStatusCodes } from '../../../constants';
-import { TFilm } from '../../../types';
 import { SagaIterator } from '@redux-saga/core';
+
+import { promoActions } from 'domains/promo/promoActions';
+import api from 'api';
+import { HttpStatusCodes } from 'mainConstants';
+import { TFilm } from 'types';
 
 export function* workFetchPromo(): SagaIterator {
     try {

@@ -1,5 +1,5 @@
-import { promoActions } from '../promoActions';
-import { PromoActionTypes } from '../promoConstants';
+import { promoActions } from 'domains/promo/promoActions';
+import { PromoActionTypes } from 'domains/promo/promoConstants';
 
 describe(`promo actions:`, () => {
     it(`fetchPromoRequest should return the right velue`, () => {

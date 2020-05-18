@@ -1,4 +1,4 @@
-import { Map } from 'immutable';
+import { Map, fromJS } from 'immutable';
 
 import { TPromoState, TPromoActions } from './promoTypes';
 import { PromoActionTypes } from './promoConstants';
@@ -17,7 +17,7 @@ const promoReducer = (state = initialStateImmutable, action: TPromoActions): typ
             return state.set(`promoError`, null);
 
         case PromoActionTypes.FETCH_PROMO_SUCCESS:
-            return state.set(`promo`, Map(action.payload))
+            return state.set(`promo`, fromJS(action.payload))
                         .set(`isPromoFetching`, false);
 
         case PromoActionTypes.FETCH_PROMO_FAIL:
