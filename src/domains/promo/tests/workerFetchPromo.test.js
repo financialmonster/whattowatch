@@ -1,10 +1,10 @@
 import { call } from 'redux-saga/effects';
 import { expectSaga } from 'redux-saga-test-plan';
 
-import { promoActions } from '../promoActions';
-import api from '../../../api';
-import workFetchPromo from '../saga/workerFetchPromo';
-import { HttpStatusCodes } from '../../../constants';
+import { promoActions } from 'domains/promo/promoActions';
+import api from 'api';
+import { workFetchPromo } from 'domains/promo/saga/workerFetchPromo';
+import { HttpStatusCodes } from 'mainConstants';
 
 describe('workFetchPromo:', () => {
     it(`should properly handle request scenario with response code 200`, () => {
@@ -22,7 +22,7 @@ describe('workFetchPromo:', () => {
             .provide([[ call(api.promo.fetchPromo), {
                 status: HttpStatusCodes.NOT_FOUND_STATUS_CODE
             }]])
-            .put(promoActions.fetchPromoFail({fake: true}))
+            .put(promoActions.fetchPromoFail(new Error(`Can't receive the promo film`)))
             .run();
     });
 });
