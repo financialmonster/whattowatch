@@ -1,23 +1,32 @@
-import React, { FC } from 'react';
+import React, { FC, useCallback } from 'react';
 import { Map } from 'immutable';
+
+import { VideoPlayer } from 'components/videoPlayer/VideoPlayer';
+import { usePlayingVideo } from 'hooks/usePlayingVideo';
 
 type TPromoProps = {
     promo: boolean | object | null | undefined
 }
 
 const Promo: FC<TPromoProps> = ({promo}) => {
-    const isPromo = (promo: boolean | object | null | undefined): promo is Map<string, any> => {
+    const {isPlaying, handleExitBtnClick, playBtnClickHandler, videoRef} = usePlayingVideo();
+
+    const isPromo = useCallback((promo: unknown): promo is Map<string, any> => {
         return (promo as Map<string, any>).get !== void 0;
-    }
+    }, []);
 
     let previewImage: string | undefined, name: string | undefined, genre: string | undefined,
-        released: number | undefined;
+        released: number | undefined, src: string | undefined, posterImage: string | undefined,
+        runTime: number | undefined;
 
     if(isPromo(promo)) {
         previewImage = promo.get(`preview_image`);
         name = promo.get(`name`);
         genre = promo.get(`genre`);
         released = promo.get(`released`);
+        src = promo.get(`video_link`);
+        posterImage = promo.get(`poster_image`);
+        runTime = promo.get(`run_time`);
     }
 
     return (
@@ -33,9 +42,11 @@ const Promo: FC<TPromoProps> = ({promo}) => {
                         <span className="movie-card__year">{ released }</span>
                     </p>
                     <div className="movie-card__buttons">
-                        <button className="btn btn--play movie-card__button" type="button">
+                        <button className="btn btn--play movie-card__button" type="button"
+                            onClick={playBtnClickHandler}
+                        >
                             <svg viewBox="0 0 19 19" width="19" height="19">
-                                <use xlinkHref="#play-s"></use>
+                                <use xlinkHref="#play"></use>
                             </svg>
                             <span>Play</span>
                         </button>
@@ -47,6 +58,9 @@ const Promo: FC<TPromoProps> = ({promo}) => {
                         </button>
                     </div>
                 </div>
+                <VideoPlayer src={src} posterImage={posterImage} runTime={runTime} ref={videoRef}
+                    isPlaying={isPlaying} handleExitBtnClick={handleExitBtnClick}
+                />
             </div>
         </div>
     );
