@@ -14,5 +14,10 @@ export const filmsActions = {
         type: FilmsActionTypes.FETCH_FILMS_FAIL,
         error: true,
         payload: error
+    }),
+
+    setFilter: (filter: string): TFilmsActions => ({
+        type: FilmsActionTypes.SET_FILTER,
+        payload: filter
     })
 }

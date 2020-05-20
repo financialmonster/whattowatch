@@ -22,4 +22,11 @@ describe(`Films actions:`, () => {
             payload: {error: true}
         });
     });
+
+    it(`setFilter should return the right value`, () => {
+        expect(filmsActions.setFilter(`Fake`)).toEqual({
+            type: FilmsActionTypes.SET_FILTER,
+            payload: `Fake`
+        });
+    });
 });

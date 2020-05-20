@@ -1,4 +1,4 @@
-import React, { FC,  memo, forwardRef } from 'react';
+import React, { FC,  memo, forwardRef, useMemo } from 'react';
 
 import { getTimeFromMins, isRefInitialized } from 'utils';
 import { useVideoPlayerProgress } from 'hooks/useVideoPlayerProgress';
@@ -30,6 +30,8 @@ export const VideoPlayer: FC<TVideoPlayerProps> = memo(forwardRef((props, ref) =
         }
     }
 
+    const duration = useMemo(() => getTimeFromMins(runTime), [runTime]);
+
     return (
         <div className="player" style={playerStyle}>
             <video className="player__video" src={src} poster={posterImage} ref={ref}></video>
@@ -44,7 +46,7 @@ export const VideoPlayer: FC<TVideoPlayerProps> = memo(forwardRef((props, ref) =
                             Toggler
                         </div>
                     </div>
-                    <div className="player__time-value">{getTimeFromMins(runTime)}</div>
+                    <div className="player__time-value">{duration}</div>
                 </div>
                 <div className="player__controls-row">
                     <button type="button" className="player__play" onClick={playPauseBtnHandler}>

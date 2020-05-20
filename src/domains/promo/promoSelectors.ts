@@ -1,11 +1,7 @@
 import { TState } from 'types';
 
-const promoSelectors = {
-    getIsPromoFetching: (state: TState) => state.promo.get(`isPromoFetching`),
+export const getIsPromoFetching = (state: TState) => state.promo.get(`isPromoFetching`);
 
-    getPromoError: (state: TState) => state.promo.get(`promoError`),
+export const getPromoError = (state: TState) => state.promo.get(`promoError`);
 
-    getPromo: (state: TState) => state.promo.get(`promo`)
-}
-
-export default promoSelectors;
+export const getPromo = (state: TState) => state.promo.get(`promo`);

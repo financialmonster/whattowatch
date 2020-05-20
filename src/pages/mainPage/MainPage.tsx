@@ -3,6 +3,7 @@ import React from 'react';
 import Header from 'components/header/Header';
 import PromoContainer from 'components/promoContainer/PromoContainer';
 import { FilmsListContainer } from 'components/filmsListContainer/FilmsListContainer';
+import { GenreFilter } from 'components/genreFilter/GenreFilter';
 
 const MainPage = () => {
     return (
@@ -14,8 +15,14 @@ const MainPage = () => {
                 <h1 className="visually-hidden">WTW</h1>
                 <Header />
                 <PromoContainer />
-                <FilmsListContainer />
             </section>
+            <div className="page-content">
+                <section className="catalog">
+                    <h2 className="catalog__title visually-hidden">Catalog</h2>
+                    <GenreFilter />
+                    <FilmsListContainer />
+                </section>
+            </div>
         </div>
     );
 };

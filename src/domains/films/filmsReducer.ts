@@ -6,7 +6,8 @@ import { FilmsActionTypes } from './filmsConstants';
 const initialState: TFilmsState = {
     films: List(),
     isFilmsFetching: true,
-    filmsError: null
+    filmsError: null,
+    filter: `All genres`
 }
 
 const initialStateImmutable = Map(initialState);
@@ -19,12 +20,15 @@ const filmsReducer = (state = initialStateImmutable, action: TFilmsActions): typ
 
         case FilmsActionTypes.FETCH_FILMS_SUCCESS:
             return state.set(`films`, fromJS(action.payload))
-                .set(`isFilmsFetching`, false);
+                        .set(`isFilmsFetching`, false);
 
         case FilmsActionTypes.FETCH_FILMS_FAIL:
             return state.set(`films`, List())
-                .set(`isFilmsFetching`, false)
-                .set(`filmsError`, action.payload);
+                        .set(`isFilmsFetching`, false)
+                        .set(`filmsError`, action.payload);
+
+        case FilmsActionTypes.SET_FILTER:
+            return state.set(`filter`, action.payload);
 
         default:
             // eslint-disable-next-line no-case-declarations,@typescript-eslint/no-unused-vars

@@ -6,7 +6,8 @@ import { filmsActions } from 'domains/films/filmsActions';
 const initialState = Map({
     films: List(),
     isFilmsFetching: true,
-    filmsError: null
+    filmsError: null,
+    filter: `All genres`
 });
 
 describe(`filmsReducer:`, () => {
@@ -26,7 +27,7 @@ describe(`filmsReducer:`, () => {
     });
 
     it(`should return right state given action with FETCH_FILMS_SUCCESS type`, () => {
-        const payload = [{fake: true}, {alsoFake: true}];
+        const payload = [{ fake: true }, { alsoFake: true }];
         const newState = initialState.set(`films`, fromJS(payload))
                                     .set(`isFilmsFetching`, false);
 
@@ -41,5 +42,12 @@ describe(`filmsReducer:`, () => {
                                     .set(`filmsError`, payload);
 
         expect(filmsReducer(initialState, filmsActions.fetchFilmsFail(payload))).toEqual(newState);
+    });
+
+     it(`should return right state given action with SET_FILTER type`, () => {
+        const payload = `Fake`; 
+        const newState = initialState.set(`filter`, payload);
+
+        expect(filmsReducer(initialState, filmsActions.setFilter(payload))).toEqual(newState);
     });
 });

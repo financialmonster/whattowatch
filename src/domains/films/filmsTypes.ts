@@ -18,10 +18,16 @@ type TFetchFilmsFail = {
     payload: Error
 }
 
-export type TFilmsActions = TFetchFilmsRequest | TFetchFilmsSuccess | TFetchFilmsFail;
+type TSetFilter = {
+    type: typeof FilmsActionTypes.SET_FILTER,
+    payload: string
+}
+
+export type TFilmsActions = TFetchFilmsRequest | TFetchFilmsSuccess | TFetchFilmsFail | TSetFilter;
 
 export type TFilmsState = {
     films: List<Map<string, any>>;
     isFilmsFetching: boolean;
-    filmsError: null | Error
+    filmsError: null | Error,
+    filter: string
 }

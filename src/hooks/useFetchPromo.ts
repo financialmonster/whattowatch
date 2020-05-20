@@ -1,7 +1,7 @@
 import { useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import promoSelectors from 'domains/promo/promoSelectors';
+import * as promoSelectors from 'domains/promo/promoSelectors';
 import { promoActions } from 'domains/promo/promoActions';
 
 export const useFetchPromo = () => {

@@ -524,6 +524,7 @@ main {
   display: block;
   color: #DFCF77;
   text-decoration: none;
+  cursor: pointer;
   position: relative;
   padding-bottom: 15px;
   -webkit-transition: font-weight;

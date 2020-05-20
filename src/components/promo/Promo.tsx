@@ -1,8 +1,8 @@
-import React, { FC, useCallback } from 'react';
-import { Map } from 'immutable';
+import React, { FC } from 'react';
 
 import { VideoPlayer } from 'components/videoPlayer/VideoPlayer';
 import { usePlayingVideo } from 'hooks/usePlayingVideo';
+import { isPromo } from 'utils';
 
 type TPromoProps = {
     promo: boolean | object | null | undefined
@@ -10,10 +10,6 @@ type TPromoProps = {
 
 const Promo: FC<TPromoProps> = ({promo}) => {
     const {isPlaying, handleExitBtnClick, playBtnClickHandler, videoRef} = usePlayingVideo();
-
-    const isPromo = useCallback((promo: unknown): promo is Map<string, any> => {
-        return (promo as Map<string, any>).get !== void 0;
-    }, []);
 
     let previewImage: string | undefined, name: string | undefined, genre: string | undefined,
         released: number | undefined, src: string | undefined, posterImage: string | undefined,

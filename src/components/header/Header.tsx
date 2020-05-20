@@ -4,7 +4,7 @@ import { push } from 'connected-react-router';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Routes } from 'mainConstants';
-import authSelectors from 'domains/auth/authSelectors';
+import * as authSelectors from 'domains/auth/authSelectors';
 
 const Header: FC = () => {
     const {pathname} = useLocation();
