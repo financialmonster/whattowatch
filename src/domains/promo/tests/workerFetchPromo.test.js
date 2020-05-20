@@ -7,8 +7,8 @@ import { workFetchPromo } from 'domains/promo/saga/workerFetchPromo';
 import { HttpStatusCodes } from 'mainConstants';
 
 describe('workFetchPromo:', () => {
-    it(`should properly handle request scenario with response code 200`, () => {
-        return expectSaga(workFetchPromo)
+    it(`should properly handle request scenario with response code 200`, async () => {
+        await expectSaga(workFetchPromo)
             .provide([[ call(api.promo.fetchPromo), {
                 status: HttpStatusCodes.SUCCESS_STATUS_CODE,
                 json: jest.fn(() => Promise.resolve({fake: true}))

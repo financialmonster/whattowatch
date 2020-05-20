@@ -20,4 +20,6 @@ export type TFilm = {
     video_link: string;
 }
 
+export type TFilms = TFilm[];
+
 export type TState = ReturnType<typeof rootReducer>;
