@@ -1,4 +1,4 @@
-import React, { FC,  memo, forwardRef, useMemo } from 'react';
+import React, { FC, memo, forwardRef, useMemo } from 'react';
 
 import { getTimeFromMins, isRefInitialized } from 'utils';
 import { useVideoPlayerProgress } from 'hooks/useVideoPlayerProgress';
@@ -32,16 +32,16 @@ export const VideoPlayer: FC<TVideoPlayerProps> = memo(forwardRef((props, ref) =
 
     const duration = useMemo(() => getTimeFromMins(runTime), [runTime]);
 
-    return (
+    return (     
         <div className="player" style={playerStyle}>
             <video className="player__video" src={src} poster={posterImage} ref={ref}></video>
-            <button type="button" className="player__exit" onClick={exitBtnClickHandler}>
+            <button type="button" className="player__exit" onClick={exitBtnClickHandler} title="Exit">
                 Exit
             </button>
             <div className="player__controls">
                 <div className="player__controls-row">
                     <div className="player__time">
-                        <progress className="player__progress" value={progress} max="100"></progress>
+                        <progress className="player__progress" value={progress} max="100" />
                         <div className="player__toggler" style={{ left: `${progress}%` }}>
                             Toggler
                         </div>
@@ -49,14 +49,18 @@ export const VideoPlayer: FC<TVideoPlayerProps> = memo(forwardRef((props, ref) =
                     <div className="player__time-value">{duration}</div>
                 </div>
                 <div className="player__controls-row">
-                    <button type="button" className="player__play" onClick={playPauseBtnHandler}>
+                    <button type="button" className="player__play" onClick={playPauseBtnHandler}
+                        title={(isActive) ? `Pause` : `Play`}
+                    >
                         <svg viewBox={(isActive) ? `0 0 14 21` : `0 0 320.001 320.001`} width="14" height="21">
                             <use xlinkHref={(isActive) ? `#pause` : "#play"}></use>
                         </svg>
                         <span>{(isActive) ? `Pause` : `Play`}</span>
                     </button>
                     <div className="player__name">Transpotting</div>
-                    <button type="button" className="player__full-screen" onClick={fullScreenBtnClickHandler}>
+                    <button type="button" className="player__full-screen" onClick={fullScreenBtnClickHandler}
+                        title="Full screen"
+                    >
                         <svg viewBox="0 0 27 27" width="27" height="27">
                             <use xlinkHref="#full-screen"></use>
                         </svg>

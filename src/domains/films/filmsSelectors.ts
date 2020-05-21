@@ -21,3 +21,12 @@ export const selectGenres = createSelector(getFilms, (films) => {
 });
 
 export const getFilter = (state: TState) => state.films.get(`filter`);
+
+export const selectFilmsByGenre = createSelector(getFilms, getFilter, (films, filter) => {
+    if(isFilms(films)) {
+        return  (filter === `All genres`)
+            ? films
+            : (films as List<Map<string, any>>)
+                    .filter((film) => film.get(`genre`) === filter);
+    }
+});

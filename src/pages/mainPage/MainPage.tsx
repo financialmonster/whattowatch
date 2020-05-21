@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 import Header from 'components/header/Header';
 import PromoContainer from 'components/promoContainer/PromoContainer';
 import { FilmsListContainer } from 'components/filmsListContainer/FilmsListContainer';
 import { GenreFilter } from 'components/genreFilter/GenreFilter';
 
-const MainPage = () => {
+const MainPage: FC = () => {
     return (
         <div className="main">
             <section className="movie-card">

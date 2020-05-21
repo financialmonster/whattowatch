@@ -28,7 +28,7 @@ export const GenreFilter: FC = () => {
 
             return (
                 <li className={genreClass} key={ genre }>
-                    <a className="catalog__genres-link" onClick={() => genreItemClickHander(genre)}>
+                    <a className="catalog__genres-link" onClick={() => genreItemClickHander(genre)} title={ genre }>
                         { genre }
                     </a>
                 </li>
@@ -43,7 +43,9 @@ export const GenreFilter: FC = () => {
     return (
         <ul className="catalog__genres-list">
             <li className={allGenresClass}>
-                <a className="catalog__genres-link" onClick={() => genreItemClickHander(`All genres`)}>
+                <a className="catalog__genres-link" onClick={() => genreItemClickHander(`All genres`)}
+                    title="All genres"
+                >
                     All genres
                 </a>
             </li>
