@@ -1,22 +1,12 @@
-import React, { useCallback, FC, ReactElement } from 'react';
-import { useLocation } from 'react-router-dom';
-import { push } from 'connected-react-router';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { FC, ReactElement } from 'react';
+import { useSelector } from 'react-redux';
 
-import { Routes } from 'mainConstants';
 import * as authSelectors from 'domains/auth/authSelectors';
+import { useLogoLinkClick } from 'hooks/useLogoLinkClick';
 
-const Header: FC = () => {
-    const {pathname} = useLocation();
-    const isMain = pathname === Routes.MAIN_PAGE;
-    const dispatch = useDispatch();
+export const Header: FC= () => {
     const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-    
-    const logoLinkClickHandler = useCallback((): void => {
-        if (!isMain) {
-            dispatch(push(Routes.MAIN_PAGE));
-        }
-    }, [isMain, dispatch]);
+    const logoLinkClickHandler = useLogoLinkClick();
 
     let userBlockJSX: ReactElement;
     
@@ -33,7 +23,7 @@ const Header: FC = () => {
     return (
         <header className="page-header">
             <div className="logo">
-                <a className="logo__link" onClick={logoLinkClickHandler} href={(isMain) ? `#`: `/`}>
+                <a className="logo__link" onClick={logoLinkClickHandler}>
                     <span className="logo__letter logo__letter--1">W</span>
                     <span className="logo__letter logo__letter--2">T</span>
                     <span className="logo__letter logo__letter--3">W</span>
@@ -45,5 +35,3 @@ const Header: FC = () => {
         </header>
     );
 }
-
-export default Header;

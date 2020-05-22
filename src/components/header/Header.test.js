@@ -1,51 +1,72 @@
 import React from 'react';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import { ConnectedRouter as Router } from 'connected-react-router';
-import { createMemoryHistory } from 'history';
+import { Router, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { createMemoryHistory } from 'history';
+import { routerMiddleware as createRouterMiddleware } from 'connected-react-router';
+import configureStore from 'redux-mock-store';
 
-import store from '../../init/store';
-import Header from './Header';
-import { Routes } from '../../constants';
+import { Routes } from 'mainConstants';
+import { Header } from './Header';
+import { storeMock } from 'mocks';
 
 Enzyme.configure({adapter: new Adapter()});
 
-describe(`header:`, () => {
-    it(`the push method should not be invoked on click on the logo link when user is on the main page`, () => {
-        const history = createMemoryHistory({ initialEntries: [`/hello`], initialIndex: 0 });
+describe(`Header:`, () => {
+    it(`when user is on the main page and clicks on the logo link, he should stay on the main page`, () => {
+        const history = createMemoryHistory({ initialEntries: [`/`] });
+        const routerMiddleware = createRouterMiddleware(history);
+        const mockStore = configureStore([routerMiddleware]);
+        const store = mockStore(storeMock);
 
-        const header = mount(
+        let testPath;
+
+        const render = ({ location }) => {
+            testPath = location.pathname;
+        }
+
+        const footer = mount(
             <Provider store={store}> 
                 <Router history={history}>
                     <Header />
+                    <Route path={`*`} render={render} />
                 </Router>
             </Provider>
         );
 
-        const logoLink = header.find(`.logo__link`);
+        const logoLink = footer.find(`.logo__link`);
 
         logoLink.simulate(`click`);
 
-        expect(history.location.pathname).toBe(Routes.MAIN_PAGE);
+        expect(testPath).toEqual(Routes.MAIN_PAGE);
     });
 
-    // it(`the push method should not be invoked on click on the logo link when user is on the main page`, () => {
-    //     const header = shallow(<Header />);
-    //     const logoLink = header.find(`.logo__link`);
+    it(`when user is not on the main page and clicks on the logo link, he should be redirected to the main page`, () => {
+        const history = createMemoryHistory({ initialEntries: [`/test`] });
+        const routerMiddleware = createRouterMiddleware(history);
+        const mockStore = configureStore([routerMiddleware]);
+        const store = mockStore(storeMock);
 
-    //     jest.mock('react-router-dom', () => ({
-    //         useLocation: () => ({
-    //             pathname: `/`
-    //         })
-    //     }));
+        let testPath;
 
-    //     const push = jest.fn();
+        const render = ({ location }) => {
+            testPath = location.pathname;
+        }
 
-    //     jest.mock('connected-react-router', () => ({push}));
+        const footer = mount(
+            <Provider store={store}> 
+                <Router history={history}>
+                    <Header />
+                    <Route path={`*`} render={render} />
+                </Router>
+            </Provider>
+        );
 
-    //     logoLink.simulate(`click`);
+        const logoLink = footer.find(`.logo__link`);
 
-    //     expect(push).not.toHaveBeenCalled();
-    // });
+        logoLink.simulate(`click`);
+
+        expect(testPath).toEqual(Routes.MAIN_PAGE);
+    });
 });
