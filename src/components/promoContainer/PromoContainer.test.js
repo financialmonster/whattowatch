@@ -3,21 +3,17 @@ import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
-import { Map } from 'immutable';
 
-import PromoContainer from './PromoContainer';
+import { PromoContainer } from './PromoContainer';
 import { promoActions } from 'domains/promo/promoActions';
+import { storeMock } from 'mocks';
 
 Enzyme.configure({adapter: new Adapter()});
 
 describe(`PromoFilm:`, () => {
     it(`should dispatch fetchPromoRequest action after mounting`, () => {
         const mockStore = configureStore();
-        const store = mockStore({ promo: Map({
-            promo: Map(),
-            isPromoFetching: true,
-            promoError: null
-        }) });
+        const store = mockStore(storeMock);
 
         mount(
             <Provider store={store}>

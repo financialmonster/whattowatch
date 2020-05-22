@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from 'redux';
 import { createLogger } from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
-import { routerMiddleware as createRouterMiddleware } from 'connected-react-router';
+import { routerMiddleware as createRouterMiddleware } from 'connected-react-router/immutable';
 import createSagaMiddleware from 'redux-saga';
 
 import { rootReducer, history } from './rootReducer';

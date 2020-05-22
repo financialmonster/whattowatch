@@ -5,7 +5,7 @@ import Promo from 'components/promo/Promo';
 import Spinner from 'components/spinner/Spinner';
 import { useFetchPromo } from 'hooks/useFetchPromo';
 
-const PromoContainer: FC = () => {
+export const PromoContainer: FC = () => {
     const {isPromoFetching, promoError, promo} = useFetchPromo();
     const verifiedPromo = promo as Map<string, any>;
 
@@ -19,5 +19,3 @@ const PromoContainer: FC = () => {
 
     return <Promo promo={verifiedPromo} />;
 }
-
-export default PromoContainer;

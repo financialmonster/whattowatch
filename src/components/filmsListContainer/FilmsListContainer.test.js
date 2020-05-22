@@ -3,21 +3,17 @@ import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
-import { List, Map } from 'immutable';
 
 import { FilmsListContainer } from './FilmsListContainer';
 import { filmsActions } from 'domains/films/filmsActions';
+import { storeMock } from 'mocks';
 
 Enzyme.configure({adapter: new Adapter()});
 
 describe(`FilmsListContainer:`, () => {
     it(`should dispatch fetchFilmsRequest action after mounting`, () => {
         const mockStore = configureStore();
-        const store = mockStore({ films: Map({
-            films: List(),
-            isFilmsFetching: true,
-            filmsError: null
-        }) });
+        const store = mockStore(storeMock);
 
         mount(
             <Provider store={store}>

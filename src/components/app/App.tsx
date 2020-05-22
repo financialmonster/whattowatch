@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import { Routes }  from 'mainConstants';
-import MainPage from 'pages/mainPage/MainPage';
+import { MainPage } from 'pages/mainPage/MainPage';
 
 const App: FC = () => {
     return (

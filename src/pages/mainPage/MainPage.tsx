@@ -1,11 +1,12 @@
 import React, { FC } from 'react';
 
-import Header from 'components/header/Header';
-import PromoContainer from 'components/promoContainer/PromoContainer';
+import { Header } from 'components/header/Header';
+import { PromoContainer } from 'components/promoContainer/PromoContainer';
 import { FilmsListContainer } from 'components/filmsListContainer/FilmsListContainer';
 import { GenreFilter } from 'components/genreFilter/GenreFilter';
+import { Footer } from 'components/footer/Footer';
 
-const MainPage: FC = () => {
+export const MainPage: FC = () => {
     return (
         <div className="main">
             <section className="movie-card">
@@ -22,9 +23,8 @@ const MainPage: FC = () => {
                     <GenreFilter />
                     <FilmsListContainer />
                 </section>
+                <Footer />
             </div>
         </div>
     );
 };
-
-export default MainPage;

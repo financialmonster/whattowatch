@@ -1,4 +1,4 @@
-import { connectRouter } from 'connected-react-router';
+import { connectRouter } from 'connected-react-router/immutable';
 import { combineReducers, createStore } from 'redux';
 
 import store from './store';

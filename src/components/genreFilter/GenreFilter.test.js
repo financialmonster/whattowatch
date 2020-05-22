@@ -3,22 +3,17 @@ import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
-import { Map, fromJS } from 'immutable';
 
 import { GenreFilter} from './GenreFilter';
 import { filmsActions } from 'domains/films/filmsActions';
+import { storeMock } from 'mocks';
 
 Enzyme.configure({adapter: new Adapter()});
 
 describe(`GenreFilter:`, () => {
     it(`should dispatch setFilter action with the right value after click on the genre item`, () => {
         const mockStore = configureStore();
-        const store = mockStore({ films: Map({
-            films: fromJS([{genre: `Thriller`}, {genre: `Comedy`}]),
-            isFilmsFetching: false,
-            filmsError: null,
-            filter: `All genres`
-        }) });
+        const store = mockStore(storeMock);
 
         const genreFilter = mount(
             <Provider store={store}>
