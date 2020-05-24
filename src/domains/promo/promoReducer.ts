@@ -14,7 +14,8 @@ const initialStateImmutable = Map(initialState);
 const promoReducer = (state = initialStateImmutable, action: TPromoActions): typeof initialStateImmutable => {
     switch(action.type) {
         case PromoActionTypes.FETCH_PROMO_REQUEST:
-            return state.set(`promoError`, null);
+            return state.set(`promoError`, null)
+                        .set(`isPromoFetching`, true);
 
         case PromoActionTypes.FETCH_PROMO_SUCCESS:
             return state.set(`promo`, fromJS(action.payload))

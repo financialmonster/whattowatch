@@ -28,6 +28,6 @@ export type TFilmsActions = TFetchFilmsRequest | TFetchFilmsSuccess | TFetchFilm
 export type TFilmsState = {
     films: List<Map<string, any>>;
     isFilmsFetching: boolean;
-    filmsError: null | Error,
+    filmsError: null | Error;
     filter: string
 }

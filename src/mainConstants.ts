@@ -1,8 +1,11 @@
 export enum Routes {
-    MAIN_PAGE = '/'
+    MAIN_PAGE = '/',
+    LOGIN_PAGE = '/login',
+    FILM_PAGE = '/film'
 }
 
 export enum HttpStatusCodes {
     SUCCESS_STATUS_CODE = 200,
-    NOT_FOUND_STATUS_CODE = 404
+    NOT_FOUND_STATUS_CODE = 404,
+    UNAUTHORIZED_STATUS_CODE = 401
 }; 

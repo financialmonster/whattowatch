@@ -13,6 +13,10 @@ export const storeMock = {
         filter: `All genres`
     }),
     auth: Map({
-        isLoggedIn: false
+        user: null,
+        authError: null,
+        isAuthFetching: false,
+        authStatusError: null,
+        isAuthStatusFetching: false
     })
 }

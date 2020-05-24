@@ -19,7 +19,8 @@ describe(`promoReducer:`, () => {
     });
 
     it(`should return right state given action with FETCH_PROMO_REQUEST type`, () => {
-        const newState = initialState.set(`promoError`, null);
+        const newState = initialState.set(`promoError`, null)
+                                    .set(`isPromoFetching`, true);
 
         expect(promoReducer(initialState, promoActions.fetchPromoRequest())).toEqual(newState);
     });

@@ -8,7 +8,7 @@ import { Footer } from 'components/footer/Footer';
 
 export const MainPage: FC = () => {
     return (
-        <div className="main">
+        <>
             <section className="movie-card">
                 <div className="movie-card__bg">
                     <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
@@ -25,6 +25,6 @@ export const MainPage: FC = () => {
                 </section>
                 <Footer />
             </div>
-        </div>
+        </>
     );
 };

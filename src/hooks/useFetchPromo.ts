@@ -8,7 +8,7 @@ export const useFetchPromo = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(promoActions.fetchPromoRequest());
+        dispatch(promoActions.fetchPromoRequest());        
     }, [dispatch]);
 
     const isPromoFetching = useSelector(promoSelectors.getIsPromoFetching);

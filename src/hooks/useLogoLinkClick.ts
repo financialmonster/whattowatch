@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { push } from 'connected-react-router';
+import { push } from 'connected-react-router/immutable';
 import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 

@@ -5,14 +5,14 @@ export const usePlayingVideo = () => {
 
     const videoRef = useRef<HTMLVideoElement>(null);
 
-    const playBtnClickHandler = useCallback((): void => {
+    const playBtnClickHandler = useCallback(() => {
         if(videoRef && videoRef.current) {
             videoRef.current.play();
             setIsPlaying(true);            
         }
     }, []);
 
-    const handleExitBtnClick = useCallback((): void => {
+    const handleExitBtnClick = useCallback(() => {
         setIsPlaying(false); 
     }, []);
 
