@@ -30,7 +30,11 @@ export const VideoPlayer: FC<TVideoPlayerProps> = memo(forwardRef((props, ref) =
         }
     }
 
-    const duration = useMemo(() => getTimeFromMins(runTime), [runTime]);
+    const restTimeFormatted = useMemo(() => {
+        const restTime = (runTime as number) * (100 - progress);
+
+        return getTimeFromMins(restTime);
+    }, [runTime, progress]);
 
     return (     
         <div className="player" style={playerStyle}>
@@ -46,7 +50,7 @@ export const VideoPlayer: FC<TVideoPlayerProps> = memo(forwardRef((props, ref) =
                             Toggler
                         </div>
                     </div>
-                    <div className="player__time-value">{duration}</div>
+                    <div className="player__time-value">{restTimeFormatted}</div>
                 </div>
                 <div className="player__controls-row">
                     <button type="button" className="player__play" onClick={playPauseBtnHandler}

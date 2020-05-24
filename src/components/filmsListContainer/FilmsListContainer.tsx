@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { List, Map } from 'immutable';
 
 import { useFetchFilms } from 'hooks/useFetchFilms';
-import Spinner from 'components/spinner/Spinner';
+import { Spinner } from 'components/spinner/Spinner';
 import { FilmsList } from 'components/filmsList/FilmsList';
 import * as filmsSelectors from 'domains/films/filmsSelectors';
 import { useFilmsListBatch } from 'hooks/useFilmsListBatch';
@@ -31,7 +31,9 @@ export const FilmsListContainer: FC = () => {
             <FilmsList films={ batchedFilms } />
             <div className="catalog__more">
                 {(hasMoreFilms) &&
-                    <button className="catalog__button" type="button" onClick={showMoreBtnClickHandler}>
+                    <button className="catalog__button" type="button" onClick={showMoreBtnClickHandler}
+                        title="Show more"
+                    >
                         Show more
                     </button>
                 }

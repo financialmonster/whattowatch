@@ -10,7 +10,7 @@ import { storeMock } from 'mocks';
 
 Enzyme.configure({adapter: new Adapter()});
 
-describe(`PromoFilm:`, () => {
+describe(`PromoContainer:`, () => {
     it(`should dispatch fetchPromoRequest action after mounting`, () => {
         const mockStore = configureStore();
         const store = mockStore(storeMock);

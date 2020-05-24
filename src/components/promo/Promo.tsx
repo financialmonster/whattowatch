@@ -8,7 +8,7 @@ type TPromoProps = {
     promo: Map<string, any>
 }
 
-const Promo: FC<TPromoProps> = ({promo}) => {
+export const Promo: FC<TPromoProps> = React.memo(({promo}) => {
     const {isPlaying, handleExitBtnClick, playBtnClickHandler, videoRef} = usePlayingVideo();
 
     const previewImage: string = promo.get(`preview_image`);
@@ -54,6 +54,4 @@ const Promo: FC<TPromoProps> = ({promo}) => {
             </div>
         </div>
     );
-}
-
-export default React.memo(Promo);
+});

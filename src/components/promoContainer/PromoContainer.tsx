@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { Map } from 'immutable';
 
-import Promo from 'components/promo/Promo';
-import Spinner from 'components/spinner/Spinner';
+import { Promo } from 'components/promo/Promo';
+import { Spinner } from 'components/spinner/Spinner';
 import { useFetchPromo } from 'hooks/useFetchPromo';
 
 export const PromoContainer: FC = () => {

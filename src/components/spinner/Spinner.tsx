@@ -50,7 +50,7 @@ const animationDelays: number[] = [-0.9166666666666666, -0.8333333333333334, -0.
     -0.08333333333333333, 0
 ];
 
-const Spinner: FC = () => (
+export const Spinner: FC = () => (
     <SpinnerWrapper>   
         {
             new Array(12).fill(``).map((_, idx) => (
@@ -61,5 +61,3 @@ const Spinner: FC = () => (
         }
     </SpinnerWrapper>
 );
-
-export default Spinner;

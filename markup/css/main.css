@@ -1351,6 +1351,7 @@ main {
   font-size: 20px;
   line-height: 24px;
   color: #DFCF77;
+  cursor: pointer;
   font-weight: bold;
   text-decoration: none;
   -webkit-transition: color 0.2s;

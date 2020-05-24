@@ -3,7 +3,7 @@ import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { fromJS } from 'immutable';
 
-import Promo from './Promo';
+import { Promo } from './Promo';
 
 Enzyme.configure({adapter: new Adapter()});
 
