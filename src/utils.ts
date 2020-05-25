@@ -14,9 +14,36 @@ export const isRefInitialized = (ref: unknown): ref is MutableRefObject<HTMLVide
 }
 
 export const isFilms = (films: unknown): films is List<Map<string, any>> => {
-    return (films as List<Map<string, any>>).map !== void 0;
+    return (films as List<Map<string, any>>).size !== 0;
 }
 
-export const isGenres = (genres: unknown): genres is Set<string> => {
-    return (genres as Set<string>).map !== void 0;
+export const isGenres = (genres: Set<any> | undefined): genres is Set<string> => {
+    return genres !== void 0;
+}
+
+export const mapRatingToMark = (rating: number): string => {
+    switch(Math.floor(rating)) {
+        case 10:
+            return `Awesome`;
+
+        case 9:
+        case 8:
+            return `Very good`;
+
+        case 7:
+        case 6:
+        case 5:
+            return `Good`;
+
+        case 4:
+        case 3:
+            return `Normal`;
+
+        case 2:
+        case 1:
+        case 0:
+            return `Bad`;
+    }
+
+    return `User's mark`;
 }
