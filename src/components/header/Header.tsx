@@ -5,17 +5,38 @@ import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 
 import * as authSelectors from 'domains/auth/authSelectors';
+import * as promoSelectors from 'domains/promo/promoSelectors';
 import { useLogoLinkClick } from 'hooks/useLogoLinkClick';
 import { useSignInLinkClick } from 'hooks/useSignInLinkClick';
 import { Routes } from 'mainConstants';
+import { Logo } from 'components/logo/Logo';
 
-export const Header: FC = () => {
+type THeaderProps = {
+    film?: Map<string, any>;
+}
+
+export const Header: FC<THeaderProps> = ({film}) => {
     const user = useSelector(authSelectors.getUser);
+    const promo = useSelector(promoSelectors.getPromo);
     const authStatusError = useSelector(authSelectors.getAuthStatusError);
     const isAuthStatusFetching = useSelector(authSelectors.getIsAuthStatusFetching);
 
-    const { pathname } = useLocation();
+    let backgroundImage: string;
+    let name: string;
+
+    if(film) {
+        backgroundImage = (film as Map<string, any>).get(`background_image`);
+        name = (film as Map<string, any>).get(`name`);
+
+    } else {
+        backgroundImage = (promo as Map<string, any>).get(`background_image`);
+        name = (promo as Map<string, any>).get(`name`);
+    }
+
+    const {pathname} = useLocation();
     const isFilmPage = pathname === Routes.FILM_PAGE;
+    const isMainPage = pathname === Routes.MAIN_PAGE;
+
     const logoLinkClickHandler = useLogoLinkClick();
     const {signInLinkClickHandler, isLoginPage} = useSignInLinkClick();
 
@@ -61,17 +82,19 @@ export const Header: FC = () => {
     });
 
     return (
-        <header className={headerClass}>
-            <div className="logo">
-                <a className="logo__link" onClick={logoLinkClickHandler}>
-                    <span className="logo__letter logo__letter--1">W</span>
-                    <span className="logo__letter logo__letter--2">T</span>
-                    <span className="logo__letter logo__letter--3">W</span>
-                </a>
-            </div>
-            {
-                (isLoginPage) ? <h1 className="page-title user-page__title">Sign in</h1> : userBlockJSX
+        <>
+            {(!isLoginPage) &&
+                <div className="movie-card__bg">
+                    <img src={backgroundImage} alt={name} />
+                </div>
             }
-        </header>
+            <h1 className="visually-hidden">WTW</h1>
+            <header className={headerClass}>
+                <Logo isMainPage={isMainPage} logoLinkClickHandler={logoLinkClickHandler} />
+                {
+                    (isLoginPage) ? <h1 className="page-title  user-page__title">Sign in</h1> : userBlockJSX
+                }
+            </header>
+        </>
     );
 }

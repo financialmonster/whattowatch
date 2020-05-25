@@ -1,19 +1,18 @@
 import React, { FC } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import { useLogoLinkClick } from 'hooks/useLogoLinkClick';
+import { Routes } from 'mainConstants';
+import { Logo } from 'components/logo/Logo';
 
 export const Footer: FC = () => {
     const logoLinkClickHandler = useLogoLinkClick();
+    const {pathname} = useLocation();
+    const isMainPage = pathname === Routes.MAIN_PAGE;
 
     return (
         <footer className="page-footer">
-            <div className="logo">
-                <a className="logo__link logo__link--light" onClick={logoLinkClickHandler}>
-                    <span className="logo__letter logo__letter--1">W</span>
-                    <span className="logo__letter logo__letter--2">T</span>
-                    <span className="logo__letter logo__letter--3">W</span>
-                </a>
-            </div>
+            <Logo isMainPage={isMainPage} logoLinkClickHandler={logoLinkClickHandler} isFooter />
             <div className="copyright">
                 <p>© 2020 What to watch Ltd.</p>
             </div>

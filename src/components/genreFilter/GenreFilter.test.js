@@ -6,15 +6,15 @@ import { Provider } from 'react-redux';
 
 import { GenreFilter} from './GenreFilter';
 import { filmsActions } from 'domains/films/filmsActions';
-import { storeMock } from 'mocks';
+import { createStoreMock } from 'mocks';
 
 Enzyme.configure({adapter: new Adapter()});
 
 describe(`GenreFilter:`, () => {
     it(`should dispatch setFilter action with the right value after click on the genre item`, () => {
         const mockStore = configureStore();
-        const store = mockStore(storeMock);
-
+        const store = mockStore(createStoreMock());
+        
         const genreFilter = mount(
             <Provider store={store}>
                 <GenreFilter />

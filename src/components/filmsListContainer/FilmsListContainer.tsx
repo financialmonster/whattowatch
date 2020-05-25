@@ -7,16 +7,21 @@ import { Spinner } from 'components/spinner/Spinner';
 import { FilmsList } from 'components/filmsList/FilmsList';
 import * as filmsSelectors from 'domains/films/filmsSelectors';
 import { useFilmsListBatch } from 'hooks/useFilmsListBatch';
+import { isFilms } from 'utils';
 
 export const FilmsListContainer: FC = () => {
-    const {isFilmsFetching, filmsError} = useFetchFilms();
+    const {isFilmsFetching, filmsError, films} = useFetchFilms();
     const {batch, requestNextBatch} = useFilmsListBatch();
 
     const filteredFilms = useSelector(filmsSelectors.selectFilmsByGenre);
     const showMoreBtnClickHandler = useCallback(requestNextBatch, []);
+    let batchedFilms;
+    let hasMoreFilms;
 
-    const batchedFilms = (filteredFilms as List<Map<string, any>>).slice(0, batch);
-    const hasMoreFilms = batchedFilms.size < (filteredFilms as List<Map<string, any>>).size;
+    if(isFilms(films)) {
+        batchedFilms = (filteredFilms as List<Map<string, any>>).slice(0, batch);
+        hasMoreFilms = batchedFilms.size < (filteredFilms as List<Map<string, any>>).size;
+    }
 
     if(isFilmsFetching) {
         return <Spinner />;

@@ -9,7 +9,7 @@ import { history } from 'init/rootReducer';
 
 import { App } from './App';
 import { authActions } from 'domains/auth/authActions';
-import { storeMock } from 'mocks';
+import { createStoreMock } from 'mocks';
 
 Enzyme.configure({adapter: new Adapter()});
 
@@ -17,8 +17,8 @@ describe(`App:`, () => {
     it(`should dispatch fetchAuthStatusRequest action after mounting`, () => {
         const routerMiddleware = createRouterMiddleware(history);
         const mockStore = configureStore([routerMiddleware]);
-        const store = mockStore(storeMock);
-
+        const store = mockStore(createStoreMock());
+        
         mount(
             <Provider store={store}>
                 <Router history={history}>

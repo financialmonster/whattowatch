@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, Children } from 'react';
 import styled, { keyframes } from 'styled-components';
 
 type TPetalProps = {
@@ -53,11 +53,11 @@ const animationDelays: number[] = [-0.9166666666666666, -0.8333333333333334, -0.
 export const Spinner: FC = () => (
     <SpinnerWrapper>   
         {
-            new Array(12).fill(``).map((_, idx) => (
-                <Petal key={idx} rotate={`rotate(${transformDegs[idx]}deg)`}
+            Children.toArray(new Array(12).fill(``).map((_, idx) => (
+                <Petal rotate={`rotate(${transformDegs[idx]}deg)`}
                     delay={`${animationDelays[idx]}s`}
                 />
-            ))
+            )))
         }
     </SpinnerWrapper>
 );

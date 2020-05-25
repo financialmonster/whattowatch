@@ -3,18 +3,22 @@ import React, { FC, memo, forwardRef, useMemo } from 'react';
 import { getTimeFromMins, isRefInitialized } from 'utils';
 import { useVideoPlayerProgress } from 'hooks/useVideoPlayerProgress';
 import { useActiveVideoPlayer } from 'hooks/useActiveVideoPlayer';
+import { Spinner } from 'components/spinner/Spinner';
 
 type TVideoPlayerProps = {
-    src: string | undefined,
-    posterImage: string | undefined,
-    runTime: number | undefined,
-    ref: React.RefObject<HTMLVideoElement>,
-    isPlaying: boolean,
-    handleExitBtnClick: () => void
+    src: string | undefined;
+    posterImage: string | undefined;
+    runTime: number | undefined;
+    ref: React.RefObject<HTMLVideoElement>;
+    isPlaying: boolean;
+    handleExitBtnClick: () => void;
+    isVideoLoading: boolean;
+    onCanPlayThroughHandler: () => void;
 }
 
 export const VideoPlayer: FC<TVideoPlayerProps> = memo(forwardRef((props, ref) => {
-    const {handleExitBtnClick, src, posterImage, runTime, isPlaying} = props;
+    const { handleExitBtnClick, src, posterImage, runTime, isPlaying, isVideoLoading,
+        onCanPlayThroughHandler} = props;
 
     const progress = useVideoPlayerProgress(ref);
     const {isActive, playPauseBtnHandler, exitBtnClickHandler} =
@@ -28,7 +32,7 @@ export const VideoPlayer: FC<TVideoPlayerProps> = memo(forwardRef((props, ref) =
         if(isRefInitialized(ref)) {
             ref.current.requestFullscreen();
         }
-    }
+    }    
 
     const restTimeFormatted = useMemo(() => {
         const restTime = (runTime as number) * (100 - progress);
@@ -36,9 +40,18 @@ export const VideoPlayer: FC<TVideoPlayerProps> = memo(forwardRef((props, ref) =
         return getTimeFromMins(restTime);
     }, [runTime, progress]);
 
+    if(isVideoLoading) {
+        return (
+            <div className="player" style={playerStyle}>
+                <Spinner />
+                <video className="player__video" src={src} ref={ref} onCanPlayThrough={onCanPlayThroughHandler} />
+            </div>
+        );
+    }
+
     return (     
         <div className="player" style={playerStyle}>
-            <video className="player__video" src={src} poster={posterImage} ref={ref}></video>
+            <video className="player__video" src={src} poster={posterImage} ref={ref} />
             <button type="button" className="player__exit" onClick={exitBtnClickHandler} title="Exit">
                 Exit
             </button>

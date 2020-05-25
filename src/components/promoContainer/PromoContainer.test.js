@@ -6,15 +6,15 @@ import { Provider } from 'react-redux';
 
 import { PromoContainer } from './PromoContainer';
 import { promoActions } from 'domains/promo/promoActions';
-import { storeMock } from 'mocks';
+import { createStoreMock } from 'mocks';
 
 Enzyme.configure({adapter: new Adapter()});
 
 describe(`PromoContainer:`, () => {
     it(`should dispatch fetchPromoRequest action after mounting`, () => {
         const mockStore = configureStore();
-        const store = mockStore(storeMock);
-
+        const store = mockStore(createStoreMock());
+        
         mount(
             <Provider store={store}>
                 <PromoContainer />

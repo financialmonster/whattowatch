@@ -6,15 +6,15 @@ import { Provider } from 'react-redux';
 
 import { FilmsListContainer } from './FilmsListContainer';
 import { filmsActions } from 'domains/films/filmsActions';
-import { storeMock } from 'mocks';
+import { createStoreMock } from 'mocks';
 
 Enzyme.configure({adapter: new Adapter()});
 
 describe(`FilmsListContainer:`, () => {
     it(`should dispatch fetchFilmsRequest action after mounting`, () => {
         const mockStore = configureStore();
-        const store = mockStore(storeMock);
-
+        const store = mockStore(createStoreMock());
+        
         mount(
             <Provider store={store}>
                 <FilmsListContainer />

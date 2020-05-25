@@ -9,7 +9,7 @@ import configureStore from 'redux-mock-store';
 
 import { Routes } from 'mainConstants';
 import { Header } from './Header';
-import { storeMock } from 'mocks';
+import { createStoreMock } from 'mocks';
 
 Enzyme.configure({adapter: new Adapter()});
 
@@ -18,8 +18,8 @@ describe(`Header:`, () => {
         const history = createMemoryHistory({ initialEntries: [`/`] });
         const routerMiddleware = createRouterMiddleware(history);
         const mockStore = configureStore([routerMiddleware]);
-        const store = mockStore(storeMock);
-
+        const store = mockStore(createStoreMock());
+        
         let testPath;
 
         const render = ({ location }) => {
@@ -46,8 +46,8 @@ describe(`Header:`, () => {
         const history = createMemoryHistory({ initialEntries: [`/test`] });
         const routerMiddleware = createRouterMiddleware(history);
         const mockStore = configureStore([routerMiddleware]);
-        const store = mockStore(storeMock);
-
+        const store = mockStore(createStoreMock());
+        
         let testPath;
 
         const render = ({ location }) => {
@@ -74,8 +74,8 @@ describe(`Header:`, () => {
         const history = createMemoryHistory({ initialEntries: [`/test`] });
         const routerMiddleware = createRouterMiddleware(history);
         const mockStore = configureStore([routerMiddleware]);
-        const store = mockStore(storeMock);
-
+        const store = mockStore(createStoreMock());
+        
         let testPath;
 
         const render = ({ location }) => {

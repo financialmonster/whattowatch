@@ -14,7 +14,7 @@ export const GenreFilter: FC = () => {
 
     const {filter, genreItemClickHander} = useGenreFilter();
 
-    if (filmsError || isFilmsFetching) {
+    if(filmsError || isFilmsFetching) {
         return null;
     }
 
@@ -22,13 +22,20 @@ export const GenreFilter: FC = () => {
     
     if(isGenres(genres)) {
         genresJSX = genres.map((genre) => {
+            const isCurrentGenre = genre === filter;
             const genreClass = cn(`catalog__genres-item`, {
-                'catalog__genres-item--active': genre === filter
+                'catalog__genres-item--active': isCurrentGenre
             });
+
+            const genreLinkStyle = (isCurrentGenre)
+                ? {cursor: `default`}
+                : {};
 
             return (
                 <li className={genreClass} key={ genre }>
-                    <a className="catalog__genres-link" onClick={() => genreItemClickHander(genre)} title={ genre }>
+                    <a className="catalog__genres-link" onClick={() => genreItemClickHander(genre)} title={(isCurrentGenre) ? `` : genre}
+                        style={genreLinkStyle}
+                    >
                         { genre }
                     </a>
                 </li>
@@ -36,19 +43,8 @@ export const GenreFilter: FC = () => {
         });
     }
 
-    const allGenresClass = cn(`catalog__genres-item`, {
-        'catalog__genres-item--active': filter === `All genres`
-    });
-
     return (
         <ul className="catalog__genres-list">
-            <li className={allGenresClass}>
-                <a className="catalog__genres-link" onClick={() => genreItemClickHander(`All genres`)}
-                    title="All genres"
-                >
-                    All genres
-                </a>
-            </li>
             { genresJSX }
         </ul>
     );
