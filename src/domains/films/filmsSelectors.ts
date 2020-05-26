@@ -26,9 +26,17 @@ export const getFilter = (state: TState) => state.films.get(`filter`);
 
 export const selectFilmsByGenre = createSelector(getFilms, getFilter, (films, filter) => {
     if(isFilms(films)) {
-        return  (filter === `All genres`)
+        return (filter === `All genres`)
             ? films
             : (films as List<Map<string, any>>)
                     .filter((film) => film.get(`genre`) === filter);
+    }
+});
+
+export const selectSimilarFilmsFactory = (film: Map<string, any>) => createSelector(getFilms, (films) => {
+    if(isFilms(films)) {
+        return (films as List<Map<string, any>>)
+                .filter((el) => el.get(`genre`) === film.get(`genre`) && el !== film)
+                .slice(0, 4);
     }
 });

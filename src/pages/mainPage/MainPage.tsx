@@ -16,7 +16,9 @@ export const MainPage: FC = () => {
     if(promo) {
         const backgroundColor: string = (promo as Map<string, any>).get(`background_color`);
 
-        divStyle = { backgroundImage: `linear-gradient(-180deg, ${backgroundColor} 0%, ${backgroundColor} 100%)`}
+        divStyle = {
+            backgroundImage: `linear-gradient(-180deg, ${backgroundColor} 0%, ${backgroundColor} 100%)`
+        }
     }
 
     return (
