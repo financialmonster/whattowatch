@@ -26,6 +26,9 @@ const api = {
 			},
             credentials:`include`
         })
+    },
+    reviews: {
+        fetchReviews: (id: number) => fetch(`${BASE_URL}/comments/${id}`)
     }
 }
 
