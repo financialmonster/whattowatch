@@ -17,9 +17,22 @@ export const isFilms = (films: unknown): films is List<Map<string, any>> => {
     return (films as List<Map<string, any>>).size !== 0;
 }
 
+export const isReviews = (reviews: unknown): reviews is List<Map<string, any>> => {
+    return (reviews as List<Map<string, any>>).size !== 0;
+}
+
 export const isGenres = (genres: Set<any> | undefined): genres is Set<string> => {
     return genres !== void 0;
 }
+
+export const mapMonthToNubmer = (number: number) => {
+    const MONTHS: string[] = [`January`, `February`, `March`, `April`, `May`, `June`, `July`, `August`, `September`,
+        `October`, `November`, `December`];
+
+    return MONTHS[number];
+}
+
+export default mapMonthToNubmer;
 
 export const mapRatingToMark = (rating: number): string => {
     switch(Math.floor(rating)) {

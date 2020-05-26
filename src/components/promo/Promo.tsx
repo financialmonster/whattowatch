@@ -10,7 +10,7 @@ type TPromoProps = {
 }
 
 export const Promo: FC<TPromoProps> = memo(({ promo }) => {
-    const { isPlaying, handleExitBtnClick, playBtnClickHandler, videoRef, isVideoLoading,
+    const {isPlaying, handleExitBtnClick, playBtnClickHandler, videoRef, isVideoLoading,
         onCanPlayThroughHandler} = usePlayingVideo();
     const name: string = promo.get(`name`);
 

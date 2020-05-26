@@ -24,7 +24,7 @@ export type TFilms = TFilm[];
 
 export type TUserData = {
     password: string;
-    email: string
+    email: string;
 }
 
 export type TUser = {
@@ -33,5 +33,18 @@ export type TUser = {
     name: string;
     avatar_url: string;
 }
+
+export type TReview = {
+    comment: string;
+    date: string;
+    id: number;
+    rating: number;
+    user: {
+        id: number;
+        name: string;
+    }
+}
+
+export type TReviews = TReview[];
 
 export type TState = ReturnType<typeof rootReducer>;

@@ -1,4 +1,4 @@
-import { Map, fromJS } from 'immutable';
+import { Map, fromJS, List } from 'immutable';
 
 export const createStoreMock = (mode: string = `common`) => {
     return {
@@ -19,6 +19,11 @@ export const createStoreMock = (mode: string = `common`) => {
             isAuthFetching: false,
             authStatusError: null,
             isAuthStatusFetching: false
+        }),
+        reviews: Map({
+            reviews: List(),
+            isReviewsFetching: true,
+            reviewsError: null
         })
     }
 }
