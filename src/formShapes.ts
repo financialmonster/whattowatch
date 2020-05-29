@@ -18,3 +18,19 @@ export const loginFormShape = {
             .trim()
     })
 }
+
+export const reviewFormShape = {
+    initialValues: {
+        'rating': ``,
+        'review-text': ``
+    },
+    schema: object().shape({
+        'rating': string()
+            .required(`Rating is required`),
+        'review-text': string()
+            .min(50, `Review should be more than 50 characters`)
+            .max(400, `Review should be less than 400 characters`)
+            .required(`Review is required field`)
+            .trim()
+    })
+}
