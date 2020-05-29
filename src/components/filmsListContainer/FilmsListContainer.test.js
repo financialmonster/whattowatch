@@ -11,9 +11,9 @@ import { createStoreMock } from 'mocks';
 Enzyme.configure({adapter: new Adapter()});
 
 describe(`FilmsListContainer:`, () => {
-    it(`should dispatch fetchFilmsRequest action after mounting`, () => {
+    it(`should dispatch fetchFilmsRequest action after mounting if there is no films in the store`, () => {
         const mockStore = configureStore();
-        const store = mockStore(createStoreMock());
+        const store = mockStore(createStoreMock(`special`));
         
         mount(
             <Provider store={store}>

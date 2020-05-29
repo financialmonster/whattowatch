@@ -1,4 +1,4 @@
-import React, { FC, memo, useEffect } from 'react';
+import React, { FC, memo, useEffect, useState, useCallback } from 'react';
 import { Map, List } from 'immutable';
 import cn from 'classnames';
 
@@ -9,20 +9,33 @@ import { ReviewsTab } from 'components/reviewsTab/ReviewsTab';
 import { usePlayingVideo } from 'hooks/usePlayingVideo';
 import { FilmButtons } from 'components/filmButtons/FilmButtons';
 import { VideoPlayer } from 'components/videoPlayer/VideoPlayer';
-import { useDetailedFilmTabs } from 'hooks/useDetailedFilmTabs';
+import { useSetFilm } from 'hooks/useSetFilm';
 
 type TDetailedFilmProps = {
     film: Map<string, any>;
 }
 
 export const DetailedFilm: FC<TDetailedFilmProps> = memo(({ film }) => {
+    const [currentTab, setCurrentTab] = useState(`Overview`);
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [film]);
 
+    useEffect(() => {
+        return function clean() {
+            setCurrentTab(`Overview`);
+        }
+    }, [film]);
+
+    useSetFilm(film);
+
     const {isPlaying, handleExitBtnClick, playBtnClickHandler, videoRef, isVideoLoading,
         onCanPlayThroughHandler} = usePlayingVideo();
-    const {currentTab, navLinkClickHandler} = useDetailedFilmTabs();
+
+    const navLinkClickHandler = useCallback((tab: string): void => {
+        setCurrentTab(tab);
+    }, []);
 
     const posterImage: string = film.get(`poster_image`);
     const name: string = film.get(`name`);
@@ -66,10 +79,7 @@ export const DetailedFilm: FC<TDetailedFilmProps> = memo(({ film }) => {
                             <span className="movie-card__year">{released}</span>
                         </p>
                         <div className="movie-card__buttons">
-                            {<FilmButtons playBtnClickHandler={playBtnClickHandler} />}
-                            <a href="add-review.html" className="btn movie-card__button" title="Add review">
-                                Add review
-                            </a>
+                            {<FilmButtons playBtnClickHandler={playBtnClickHandler} detailed />}
                         </div>
                     </div>
                 </div>

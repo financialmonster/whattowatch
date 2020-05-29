@@ -25,7 +25,7 @@ export const ReviewsTab: FC<TReviewsTabProps> = memo(({ id }) => {
     let leftColReviewsJSX: List<JSX.Element> | undefined;
     let rightColReviewsJSX: List<JSX.Element> | undefined;
 
-    if(isReviews(reviews)) {        
+    if(isReviews(reviews)) {
         reviewsJSX = (reviews as List<Map<string, any>>)
             .sort((a, b) => Date.parse(b.get(`date`)) - Date.parse(a.get(`date`)))
             .map((review) => <Review review={review} key={review.get(`id`)} />);

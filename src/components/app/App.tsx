@@ -5,6 +5,7 @@ import { Routes }  from 'mainConstants';
 import { MainPage } from 'pages/mainPage/MainPage';
 import { LoginPage } from 'pages/loginPage/LoginPage';
 import { FilmPage } from 'pages/filmPage/FilmPage';
+import { ReviewPage } from 'pages/reviewPage/ReviewPage';
 import { useFetchAuthStatus } from 'hooks/useFetchAuthStatus';
 
 export const App: FC = () => {
@@ -14,7 +15,8 @@ export const App: FC = () => {
         <Switch>
             <Route path={Routes.MAIN_PAGE} component={MainPage} exact />
             <Route path={Routes.LOGIN_PAGE} component={LoginPage} exact />
-            <Route path={`${Routes.FILM_PAGE}/:id`} component={FilmPage} exact />
+            <Route path={Routes.FILM_PAGE} component={FilmPage} exact />
+            <Route path={Routes.REVIEW_PAGE} component={ReviewPage} exact />
             <Redirect to={Routes.MAIN_PAGE} />
         </Switch>
     );

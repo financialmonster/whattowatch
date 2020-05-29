@@ -1,9 +1,7 @@
-import React, { FC, useCallback, memo } from 'react';
+import React, { FC, memo } from 'react';
 import { Map } from 'immutable';
-import { push } from 'connected-react-router/immutable';
-import { useDispatch } from 'react-redux';
 
-import { Routes } from 'mainConstants';
+import { useFilmsPagePush } from 'hooks/useFilmsPagePush';
 
 type TFilmProps = {
     film: Map<string, any>;
@@ -12,11 +10,8 @@ type TFilmProps = {
 export const Film: FC<TFilmProps> = memo(({ film }) => {
     const name: string = film.get(`name`);
     const id: number = film.get(`id`);
-    const dispatch = useDispatch();
 
-    const filmDivClickHandler = useCallback(() => {
-        dispatch(push(`${Routes.FILM_PAGE}/${id}`));
-    }, [dispatch, id]);
+    const filmDivClickHandler = useFilmsPagePush(id);
 
     return (
         <article className="small-movie-card catalog__movies-card" title={name}>

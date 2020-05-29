@@ -11,7 +11,7 @@ type TDetailsTabProps = {
     starring: List<Map<string, any>>;
 }
 
-export const DetailsTab: FC<TDetailsTabProps> = memo(({released, runTime, genre, director, starring}) => {
+export const DetailsTab: FC<TDetailsTabProps> = memo(({ released, runTime, genre, director, starring }) => {
     return (
         <div className="movie-card__text movie-card__row">
             <div className="movie-card__text-col">

@@ -29,8 +29,6 @@ describe(`LoginForm:`, () => {
         });
 
         await eventually(() => {
-            loginForm.update();
-
             expect(preventDefault).toHaveBeenCalledTimes(1);
             expect(preventDefault.mock.calls[0][0]).toEqual(void 0);
         });

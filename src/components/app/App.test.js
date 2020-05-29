@@ -27,7 +27,7 @@ describe(`App:`, () => {
             </Provider>        
         );
 
-        expect(store.getActions().length).toBe(3);
-        expect(store.getActions()[2]).toEqual(authActions.fetchAuthStatusRequest());
+        expect(store.getActions().length).toBe(2);
+        expect(store.getActions()[1]).toEqual(authActions.fetchAuthStatusRequest());
     });
 });
