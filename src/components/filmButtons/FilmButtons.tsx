@@ -1,10 +1,21 @@
-import React, { FC, memo } from 'react';
+import React, { FC, memo, useCallback } from 'react';
+import { push } from 'connected-react-router/immutable';
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 type TFilmButtonsProps = {
     playBtnClickHandler: () => void;
+    detailed?: boolean;
 }
 
-export const FilmButtons: FC<TFilmButtonsProps> = memo(({playBtnClickHandler}) => {
+export const FilmButtons: FC<TFilmButtonsProps> = memo(({playBtnClickHandler, detailed}) => {
+    const dispatch = useDispatch();
+    const {id} = useParams();
+
+    const addReviewBtnClickHandler = useCallback(() => {
+        dispatch(push(`/film/${id}/review`));
+    }, [dispatch, id]);
+
     return (
         <>
             <button className="btn btn--play movie-card__button" type="button" title="Play"
@@ -21,6 +32,11 @@ export const FilmButtons: FC<TFilmButtonsProps> = memo(({playBtnClickHandler}) =
                 </svg>
                 <span>My list</span>
             </button>
+            {(detailed) &&
+                <a className="btn btn--add-review movie-card__button" title="Add review" onClick={addReviewBtnClickHandler}>
+                    Add review
+                </a> 
+            }
         </>
     );
 });
