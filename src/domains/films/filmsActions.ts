@@ -1,3 +1,5 @@
+import { Map } from 'immutable';
+
 import { FilmsActionTypes }  from './filmsConstants';
 import { TFilmsActions } from './filmsTypes';
 import { TFilms } from 'types';
@@ -19,5 +21,10 @@ export const filmsActions = {
     setFilter: (filter: string): TFilmsActions => ({
         type: FilmsActionTypes.SET_FILTER,
         payload: filter
+    }),
+
+    setFilm: (film: Map<string, any>): TFilmsActions => ({
+        type: FilmsActionTypes.SET_FILM,
+        payload: film
     })
 }

@@ -7,7 +7,8 @@ const initialState = Map({
     films: List(),
     isFilmsFetching: true,
     filmsError: null,
-    filter: `All genres`
+    filter: `All genres`,
+    film: null
 });
 
 describe(`filmsReducer:`, () => {
@@ -44,10 +45,17 @@ describe(`filmsReducer:`, () => {
         expect(filmsReducer(initialState, filmsActions.fetchFilmsFail(payload))).toEqual(newState);
     });
 
-     it(`should return right state given action with SET_FILTER type`, () => {
+    it(`should return right state given action with SET_FILTER type`, () => {
         const payload = `Fake`; 
         const newState = initialState.set(`filter`, payload);
 
         expect(filmsReducer(initialState, filmsActions.setFilter(payload))).toEqual(newState);
+    });
+
+    it(`should return right state given action with SET_FILM type`, () => {
+        const payload = {fake: true}; 
+        const newState = initialState.set(`film`, payload);
+
+        expect(filmsReducer(initialState, filmsActions.setFilm(payload))).toEqual(newState);
     });
 });

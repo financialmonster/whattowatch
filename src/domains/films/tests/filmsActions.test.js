@@ -29,4 +29,11 @@ describe(`Films actions:`, () => {
             payload: `Fake`
         });
     });
+
+    it(`setFilm should return the right value`, () => {
+        expect(filmsActions.setFilm({fake: true})).toEqual({
+            type: FilmsActionTypes.SET_FILM,
+            payload: {fake: true}
+        });
+    });
 });

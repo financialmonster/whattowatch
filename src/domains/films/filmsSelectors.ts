@@ -24,6 +24,8 @@ export const selectGenres = createSelector(getFilms, (films) => {
 
 export const getFilter = (state: TState) => state.films.get(`filter`);
 
+export const getFilm = (state: TState) => state.films.get(`film`);
+
 export const selectFilmsByGenre = createSelector(getFilms, getFilter, (films, filter) => {
     if(isFilms(films)) {
         return (filter === `All genres`)

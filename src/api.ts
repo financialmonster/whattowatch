@@ -1,4 +1,4 @@
-import { TUserData }  from 'types';
+import { TUserData, TUserReview }  from 'types';
 
 const BASE_URL = `https://htmlacademy-react-3.appspot.com/wtw`;
 
@@ -28,7 +28,18 @@ const api = {
         })
     },
     reviews: {
-        fetchReviews: (id: number) => fetch(`${BASE_URL}/comments/${id}`)
+        fetchReviews: (id: number) => fetch(`${BASE_URL}/comments/${id}`),
+        fetchReview: (id: number, reviewData: TUserReview) => fetch(`${BASE_URL}/comments/${id}`, {
+            method: `POST`,
+            headers: {
+                'Content-Type': `application/json`
+            },
+            body: JSON.stringify({
+                rating: reviewData.rating,
+                comment: reviewData["review-text"]
+            }),
+            credentials:`include`
+        })
     }
 }
 

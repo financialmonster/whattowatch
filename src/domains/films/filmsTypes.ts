@@ -1,4 +1,4 @@
-import { List } from 'immutable';
+import { List, Map } from 'immutable';
 
 import { TFilms } from 'types';
 import { FilmsActionTypes } from './filmsConstants';
@@ -23,11 +23,17 @@ type TSetFilter = {
     payload: string
 }
 
-export type TFilmsActions = TFetchFilmsRequest | TFetchFilmsSuccess | TFetchFilmsFail | TSetFilter;
+type TSetFilm = {
+    type: typeof FilmsActionTypes.SET_FILM,
+    payload: Map<string, any>
+}
+
+export type TFilmsActions = TFetchFilmsRequest | TFetchFilmsSuccess | TFetchFilmsFail | TSetFilter | TSetFilm;
 
 export type TFilmsState = {
     films: List<Map<string, any>>;
     isFilmsFetching: boolean;
     filmsError: null | Error;
-    filter: string
+    filter: string,
+    film: Map<string, any> | null
 }

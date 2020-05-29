@@ -369,9 +369,9 @@ main {
   width: 100%;
   border: none;
   background: none;
-  resize: vertical;
-  height: 150px;
-  min-height: 150px;
+  resize: none;
+  height: 266px;
+  min-height: 266px;
   padding: 25px;
   font-size: 17px;
   color: #252525;
@@ -393,6 +393,7 @@ main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin-bottom: 160px;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
@@ -413,6 +414,9 @@ main {
   transition: opacity 0.2s; }
   .add-review__btn:hover {
     opacity: 0.5; }
+.add-review__btn:disabled{
+  color:lightgray
+}
 
 .breadcrumbs {
   margin: 0 20px; }
@@ -446,6 +450,10 @@ main {
   transition: color 0.2s; }
   .breadcrumbs__link[href]:hover {
     color: #DFCF77; }
+
+.breadcrumbs__link--active {
+  cursor: pointer;
+}
 
 .btn {
   display: inline-block;
@@ -1089,6 +1097,7 @@ main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  flex-direction: row-reverse;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -1097,7 +1106,7 @@ main {
 .rating__input {
   display: none; }
   .rating__input:checked ~ .rating__label::after {
-    color: rgba(56, 44, 42, 0.36); }
+    color: rgba(56, 44, 42, 0.7); }
   .rating__input:checked + .rating__label::after {
     color: rgba(56, 44, 42, 0.7); }
 
@@ -1107,16 +1116,22 @@ main {
   display: block;
   padding-right: 10px;
   cursor: pointer; }
-  .rating__label:last-child {
+  .rating__label:first-child {
     padding-right: 0; }
   .rating__label::after {
     content: '★';
     display: block;
     font-size: 32px;
     line-height: 36px;
-    color: rgba(56, 44, 42, 0.7);
+    color: rgba(56, 44, 42, 0.36);
     -webkit-transition: color 0.2s;
     transition: color 0.2s; }
+.rating__input:not(:checked) + .rating__label:hover::after {
+  color: rgba(56,44,42,0.7)
+}
+.rating__label:hover ~ .rating__label::after {
+  color:rgba(56,44,42,0.7)
+}
 
 .review {
   border-bottom: 2px solid #E8C3C4;
@@ -1139,7 +1154,8 @@ main {
 
 .review__text {
   margin: 0;
-  margin-bottom: 15px; }
+  margin-bottom: 15px;
+  word-break:break-word }
 
 .review__details {
   display: -webkit-box;
@@ -1242,6 +1258,9 @@ main {
   cursor: pointer; }
   .sign-in__btn:hover, .sign-in__btn:focus {
     border: 1px solid rgba(217, 205, 141, 0.7); }
+.sign-in__btn:disabled{
+  color:grey
+}
 
 .sign-in__reset-password {
   text-align: center; }
@@ -1256,10 +1275,11 @@ main {
   .sign-in__link:hover, .sign-in__link:focus {
     color: #DFCF77; }
 
-.sign-in__message {
+.sign-in__message,
+.review__message {
   text-align: center;
   font-size: 22px;
-  color: #DFCF77;
+  color: #A8421E;
   text-align: center;
   line-height: 26px;
   margin-bottom: 42px; }

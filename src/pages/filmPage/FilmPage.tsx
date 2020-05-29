@@ -56,7 +56,7 @@ export const FilmPage: FC = () => {
                 <DetailedFilm film={ film } />
             </section>
             <div className="page-content" style={divStyle}>
-                <SimilarFilms film={film } />
+                <SimilarFilms film={ film } />
                 <Footer />
             </div>
         </>

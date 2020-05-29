@@ -27,6 +27,11 @@ export type TUserData = {
     email: string;
 }
 
+export type TUserReview = {
+    'rating': string;
+    'review-text': string;
+}
+
 export type TUser = {
     id: number;
     email: string;

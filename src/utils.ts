@@ -17,6 +17,10 @@ export const isFilms = (films: unknown): films is List<Map<string, any>> => {
     return (films as List<Map<string, any>>).size !== 0;
 }
 
+export const isPromo = (promo: unknown): promo is Map<string, any> => {
+    return (promo as Map<string, any>).size !== 0;
+}
+
 export const isReviews = (reviews: unknown): reviews is List<Map<string, any>> => {
     return (reviews as List<Map<string, any>>).size !== 0;
 }
@@ -31,8 +35,6 @@ export const mapMonthToNubmer = (number: number) => {
 
     return MONTHS[number];
 }
-
-export default mapMonthToNubmer;
 
 export const mapRatingToMark = (rating: number): string => {
     switch(Math.floor(rating)) {

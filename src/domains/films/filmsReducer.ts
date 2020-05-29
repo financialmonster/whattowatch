@@ -7,7 +7,8 @@ const initialState: TFilmsState = {
     films: List(),
     isFilmsFetching: true,
     filmsError: null,
-    filter: `All genres`
+    filter: `All genres`,
+    film: null
 }
 
 const initialStateImmutable = Map(initialState);
@@ -29,6 +30,9 @@ const filmsReducer = (state = initialStateImmutable, action: TFilmsActions): typ
 
         case FilmsActionTypes.SET_FILTER:
             return state.set(`filter`, action.payload);
+
+        case FilmsActionTypes.SET_FILM:
+            return state.set(`film`, action.payload);
 
         default:
             // eslint-disable-next-line no-case-declarations,@typescript-eslint/no-unused-vars

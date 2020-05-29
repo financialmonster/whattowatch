@@ -8,8 +8,34 @@ export const createStoreMock = (mode: string = `common`) => {
             promoError: null
         }),
         films: Map({
-            films: fromJS([{genre: `Thriller`, id: 1}, {genre: `Comedy`, id: 2}]),
-            isFilmsFetching: mode === `detailed`,
+            films: (mode === `special`)
+                    ? List()
+                    : fromJS([{
+                genre: `Thriller`,
+                id: 1,
+                rating: 1,
+                scoresCount: 1,
+                description: ``,
+                director: ``,
+                starring: [``, ``]
+            }, {
+                genre: `Comedy`,
+                id: 2,
+                rating: 1,
+                scoresCount: 1,
+                description: ``,
+                director: ``,
+                starring: [``, ``]
+            }, {
+                genre: `Thriller`,
+                id: 3,
+                rating: 1,
+                scoresCount: 1,
+                description: ``,
+                director: ``,
+                starring: [``, ``]
+            }]),
+            isFilmsFetching: mode === `special`,
             filmsError: null,
             filter: `All genres`
         }),
@@ -21,9 +47,18 @@ export const createStoreMock = (mode: string = `common`) => {
             isAuthStatusFetching: false
         }),
         reviews: Map({
-            reviews: List(),
+            reviews: fromJS({ id: 8, data: List()}),
             isReviewsFetching: true,
             reviewsError: null
         })
     }
 }
+
+export const mockedFilm = Map({
+    rating: 1,
+    scoresCount: 1,
+    description: ``,
+    director: ``,
+    starring: [``, ``],
+    genre: `Comedy`
+});

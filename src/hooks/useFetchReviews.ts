@@ -6,12 +6,15 @@ import * as reviewsSelectors from 'domains/reviews/reviewsSelectors';
 
 export const useFetchReviews = (id: number) => {
     const dispatch = useDispatch();
+    const reviews = useSelector(reviewsSelectors.getReviews);
+    const reviewsId = useSelector(reviewsSelectors.getReviewsId);
 
     useEffect(() => {
-        dispatch(reviewsActions.fetchReviewsRequest(id))
-    }, [dispatch, id]);
+        if(reviewsId !== id) {
+            dispatch(reviewsActions.fetchReviewsRequest(id));
+        }
+    }, [dispatch, id, reviewsId, reviews]);
 
-    const reviews = useSelector(reviewsSelectors.getReviews);
     const reviewsError = useSelector(reviewsSelectors.getReviewsError);
     const isReviewsFetching = useSelector(reviewsSelectors.getIsReviewsFetching);
 
