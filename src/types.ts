@@ -1,4 +1,4 @@
-import { rootReducer } from 'init/rootReducer';
+import { persistedRootReducer } from 'init/rootReducer';
 
 export type TFilm = {
     background_color: string;
@@ -52,4 +52,4 @@ export type TReview = {
 
 export type TReviews = TReview[];
 
-export type TState = ReturnType<typeof rootReducer>;
+export type TState = ReturnType<typeof persistedRootReducer>;
