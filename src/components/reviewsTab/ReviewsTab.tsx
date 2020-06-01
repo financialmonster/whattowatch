@@ -1,5 +1,5 @@
 import React, { FC, memo } from 'react';
-import { List, Map } from 'immutable';
+import { List } from 'immutable';
 
 import { useFetchReviews } from 'hooks/useFetchReviews';
 import { Spinner } from 'components/spinner/Spinner';
@@ -26,9 +26,8 @@ export const ReviewsTab: FC<TReviewsTabProps> = memo(({ id }) => {
     let rightColReviewsJSX: List<JSX.Element> | undefined;
 
     if(isReviews(reviews)) {
-        reviewsJSX = (reviews as List<Map<string, any>>)
-            .sort((a, b) => Date.parse(b.get(`date`)) - Date.parse(a.get(`date`)))
-            .map((review) => <Review review={review} key={review.get(`id`)} />);
+        reviewsJSX = reviews.sort((a, b) => Date.parse(b.get(`date`)) - Date.parse(a.get(`date`)))
+                            .map((review) => <Review review={review} key={review.get(`id`)} />);
 
         leftColReviewsJSX = reviewsJSX.filter((_, ind) => !(ind % 2));
         rightColReviewsJSX = reviewsJSX.filter((_, ind) => ind % 2);

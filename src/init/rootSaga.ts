@@ -5,7 +5,10 @@ import { watchPromo } from 'domains/promo/saga/promoWatchers';
 import { watchFilms } from 'domains/films/saga/filmsWatchers';
 import { watchAuth } from 'domains/auth/saga/authWatchers';
 import { watchReviews } from 'domains/reviews/saga/reviewsWatchers';
+import { watchFavorites } from 'domains/favorites/saga/favoritesWatchers';
 
 export function* rootSaga(): SagaIterator {
-    yield all([call( watchPromo ), call( watchFilms ), call( watchAuth ), call( watchReviews )]);
+    yield all([call( watchPromo ), call( watchFilms ), call( watchAuth ), call( watchReviews ),
+        call( watchFavorites )
+    ]);
 }

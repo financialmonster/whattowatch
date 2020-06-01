@@ -9,6 +9,7 @@ import authReducer from 'domains/auth/authReducer';
 import promoReducer from 'domains/promo/promoReducer';
 import filmsReducer from 'domains/films/filmsReducer';
 import reviewsReducer from 'domains/reviews/reviewsReducer';
+import favoritesReducer from 'domains/favorites/favoritesReducer';
 
 const persistConfig = {
     transforms: [immutableTransform()],
@@ -24,7 +25,8 @@ const rootReducer = combineReducers({
     auth: authReducer,
     promo: promoReducer,
     films: filmsReducer,
-    reviews: reviewsReducer
+    reviews: reviewsReducer,
+    favorites: favoritesReducer
 });
 
 export const persistedRootReducer = persistReducer(persistConfig, rootReducer);

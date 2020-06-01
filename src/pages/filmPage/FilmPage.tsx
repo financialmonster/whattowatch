@@ -35,7 +35,7 @@ export const FilmPage: FC = () => {
     }
 
     if(isFilms(films)) {
-        film = films.find((film: Map<String, any>) => film.get(`id`) === +id);
+        film = films.find((film) => film.get(`id`) === +id);
     }
 
     if(!film) {

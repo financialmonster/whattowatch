@@ -1,8 +1,9 @@
-import React, { FC, ReactElement } from 'react';
+import React, { FC, ReactElement, useCallback } from 'react';
 import cn from 'classnames';
 import { Map } from 'immutable';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
+import { push } from 'connected-react-router/immutable';
 
 import * as authSelectors from 'domains/auth/authSelectors';
 import * as promoSelectors from 'domains/promo/promoSelectors';
@@ -27,6 +28,8 @@ export const Header: FC<THeaderProps> = ({film}) => {
     let posterImage: string | undefined;
     let id: number | undefined;
 
+    const dispatch = useDispatch();
+    
     if(film) {
         backgroundImage = (film as Map<string, any>).get(`background_image`);
         name = (film as Map<string, any>).get(`name`);
@@ -41,13 +44,19 @@ export const Header: FC<THeaderProps> = ({film}) => {
     const isFilmPage = pathname.includes(`film`) && !pathname.includes(`review`);
     const isMainPage = pathname === Routes.MAIN_PAGE;
     const isReviewPage = pathname.includes(`review`);
+    const isFavoritesPage = pathname === Routes.FAVORITES_PAGE;
 
     const logoLinkClickHandler = useLogoLinkClick();
     const {signInLinkClickHandler, isLoginPage} = useSignInLinkClick();
     const navLinkClickHandler = useFilmsPagePush(id);
 
-    let avatar: string;
+    const avatarImgClickHandler = useCallback(() => {
+        if (!isFavoritesPage) {
+            dispatch(push(Routes.FAVORITES_PAGE));
+        }
+    }, [dispatch, isFavoritesPage]);
 
+    let avatar: string;
     let userBlockJSX: ReactElement = (
         <div className="user-block">
             <a className="user-block__link" onClick={signInLinkClickHandler} title="To the login page">
@@ -63,11 +72,16 @@ export const Header: FC<THeaderProps> = ({film}) => {
     } else if(user) {
         avatar = (user as Map<string,any>).get(`avatar_url`);
 
+        const avatarImgStyle = (isFavoritesPage)
+            ? {cursor: `default`}
+            : {};
+
         userBlockJSX = (
             <div className="user-block">
                 <div className="user-block__avatar">
-                    <img src={`https://htmlacademy-react-3.appspot.com/${avatar}`} alt="User avatar" width="63"
-                        height="63"
+                    <img src={`https://htmlacademy-react-3.appspot.com/${avatar}`} onClick={avatarImgClickHandler}
+                        height="63" alt="User avatar" width="63" title={(isFavoritesPage) ? `` : `To the favorites page`}
+                        style={avatarImgStyle}
                     />
                 </div>
             </div>
@@ -75,13 +89,13 @@ export const Header: FC<THeaderProps> = ({film}) => {
     }
     
     const headerClass = cn(`page-header`, {
-        'user-page__head': isLoginPage,
+        'user-page__head': isLoginPage || isFavoritesPage,
         'movie-card__head': isFilmPage
     });
 
     return (
         <>
-            {(!isLoginPage) &&
+            {(!isLoginPage && !isFavoritesPage) &&
                 <div className="movie-card__bg">
                     <img src={backgroundImage} alt={name} />
                 </div>
@@ -105,7 +119,10 @@ export const Header: FC<THeaderProps> = ({film}) => {
                         </ul>
                     </nav>
                 }
-                {(isLoginPage) ? <h1 className="page-title  user-page__title">Sign in</h1> : userBlockJSX}
+                {(isLoginPage || isFavoritesPage) &&
+                    <h1 className="page-title  user-page__title">{(isLoginPage) ? `Sign in` : `My list`}</h1>
+                }
+                {(!isLoginPage) && userBlockJSX}
             </header>
             {(isReviewPage) &&
                 <div className="movie-card__poster movie-card__poster--small">
