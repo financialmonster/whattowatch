@@ -2,7 +2,8 @@ export enum Routes {
     MAIN_PAGE = '/',
     LOGIN_PAGE = '/login',
     FILM_PAGE = '/film/:id',
-    REVIEW_PAGE = '/film/:id/review'
+    REVIEW_PAGE = '/film/:id/review',
+    FAVORITES_PAGE = '/mylist'
 }
 
 export enum HttpStatusCodes {
