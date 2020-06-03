@@ -42,5 +42,9 @@ export const reviewsActions = {
         type: ReviewsActionTypes.FETCH_REVIEW_FAIL,
         error: true,
         payload: error
+    }),
+
+    resetReviewError: (): TReviewsActions => ({
+        type: ReviewsActionTypes.RESET_REVIEW_ERROR
     })
 }

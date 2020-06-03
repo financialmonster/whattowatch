@@ -13,14 +13,16 @@ export function* workFetchReview(action: TFetchReviewRequest): SagaIterator {
         const { payload: {id, reviewData}} = action;
         const response: Response = yield call(api.reviews.fetchReview, id, reviewData);
 
-        if(response.status !== HttpStatusCodes.SUCCESS_STATUS_CODE) {
-            throw new Error(`Can't save the review`);
-        }
+        if(response.status === HttpStatusCodes.SUCCESS_STATUS_CODE) {
+            const reviews: TReviews = yield call([response, response.json]);
 
-        const reviews: TReviews = yield call([response, response.json]);
-
-        yield put(reviewsActions.fetchReviewSuccess(id, reviews));
-        yield put(push(`/film/${id}`));
+            yield put(reviewsActions.fetchReviewSuccess(id, reviews));
+            yield put(push(`${process.env.PUBLIC_URL}/film/${id}`));
+        } else if (response.status === HttpStatusCodes.UNAUTHORIZED_STATUS_CODE) {
+            throw new Error(`You're unauthorized. Please, sign in and retry`);
+        } else {
+            throw new Error(`Can't save your review. Please, retry later`);
+        } 
     } catch (err) {
         yield put(reviewsActions.fetchReviewFail(err));
     }

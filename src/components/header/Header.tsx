@@ -42,17 +42,17 @@ export const Header: FC<THeaderProps> = ({film}) => {
 
     const {pathname} = useLocation();
     const isFilmPage = pathname.includes(`film`) && !pathname.includes(`review`);
-    const isMainPage = pathname === Routes.MAIN_PAGE;
+    const isMainPage = pathname === `${process.env.PUBLIC_URL}${Routes.MAIN_PAGE}`;
     const isReviewPage = pathname.includes(`review`);
-    const isFavoritesPage = pathname === Routes.FAVORITES_PAGE;
+    const isFavoritesPage = pathname === `${process.env.PUBLIC_URL}${Routes.FAVORITES_PAGE}`;
 
     const logoLinkClickHandler = useLogoLinkClick();
     const {signInLinkClickHandler, isLoginPage} = useSignInLinkClick();
     const navLinkClickHandler = useFilmsPagePush(id);
 
     const avatarImgClickHandler = useCallback(() => {
-        if (!isFavoritesPage) {
-            dispatch(push(Routes.FAVORITES_PAGE));
+        if(!isFavoritesPage) {
+            dispatch(push(`${process.env.PUBLIC_URL}${Routes.FAVORITES_PAGE}`));
         }
     }, [dispatch, isFavoritesPage]);
 

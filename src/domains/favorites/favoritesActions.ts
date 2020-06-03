@@ -35,5 +35,9 @@ export const favoritesActions = {
         type: FavoritesActionTypes.FETCH_FAVORITE_FAIL,
         error: true,
         payload: error
+    }),
+
+    resetFavoriteError: (): TFavoritesActions => ({
+        type: FavoritesActionTypes.RESET_FAVORITE_ERROR
     })
 }

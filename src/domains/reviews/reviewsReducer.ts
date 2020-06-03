@@ -42,6 +42,9 @@ const reviewsReducer = (state = initialStateImmutable, action: TReviewsActions):
                         .set(`isReviewsFetching`, false)
                         .set(`reviewError`, action.payload);
 
+        case ReviewsActionTypes.RESET_REVIEW_ERROR:
+            return state.set(`reviewError`, null);
+
         default:
             // eslint-disable-next-line no-case-declarations,@typescript-eslint/no-unused-vars
             const x: never = action;

@@ -6,7 +6,7 @@ export const useFilmsPagePush = (id?: number) => {
     const dispatch = useDispatch();
 
     const pushToFilmPage = useCallback(() => {
-        dispatch(push(`/film/${id}`));
+        dispatch(push(`${process.env.PUBLIC_URL}/film/${id}`));
     }, [dispatch, id]);
 
     return pushToFilmPage;

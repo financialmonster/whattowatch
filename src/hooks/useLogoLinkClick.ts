@@ -8,12 +8,12 @@ import { Routes } from 'mainConstants';
 export const useLogoLinkClick = () => {
     const {pathname} = useLocation();
 
-    const isMain = pathname === Routes.MAIN_PAGE;
+    const isMain = pathname === `${process.env.PUBLIC_URL}${Routes.MAIN_PAGE}`;
     const dispatch = useDispatch();
 
     const logoLinkClickHandler = useCallback((): void => {
         if(!isMain) {
-            dispatch(push(Routes.MAIN_PAGE));
+            dispatch(push(`${process.env.PUBLIC_URL}${Routes.MAIN_PAGE}`));
         }
     }, [isMain, dispatch]);
 

@@ -40,6 +40,19 @@ const api = {
             }),
             credentials:`include`
         })
+    },
+    favorites: {
+        fetchFavorites: () => fetch(`${BASE_URL}/favorite`, {
+            method: `GET`,
+            headers: {
+                'Content-Type': `application/json`
+            },
+            credentials: `include`
+        }),
+        fetchFavorite: (id: number, status: number) => fetch(`${BASE_URL}/favorite/${id}/${status}`, {
+            method: `POST`,
+            credentials: `include`
+        })
     }
 }
 

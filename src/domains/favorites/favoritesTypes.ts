@@ -37,8 +37,12 @@ type TFetchFavoriteFail = {
     payload: Error;
 }
 
-export type TFavoritesActions = TFetchFavoritesRequest | TFetchFavoritesSuccess | TFetchFavoritesFail | TFetchFavoriteRequest |
-    TFetchFavoriteSuccess | TFetchFavoriteFail;
+type TResetFavoriteError = {
+    type: typeof FavoritesActionTypes.RESET_FAVORITE_ERROR;
+}
+
+export type TFavoritesActions = TFetchFavoritesRequest | TFetchFavoritesSuccess | TFetchFavoritesFail
+    | TFetchFavoriteRequest | TFetchFavoriteSuccess | TFetchFavoriteFail | TResetFavoriteError;
 
 export type TFavoritesState = {
     favorites: List<Map<string, any>>;

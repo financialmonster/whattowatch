@@ -76,4 +76,10 @@ describe(`ReviewsReducer:`, () => {
 
         expect(reviewsReducer(initialState, reviewsActions.fetchReviewFail(payload))).toEqual(newState);
     });
+
+    it(`should return right state given action with RESET_REVIEW_ERROR type`, () => {
+        const newState = initialState.set(`reviewError`, null);
+
+        expect(reviewsReducer(initialState, reviewsActions.resetReviewError())).toEqual(newState);
+    });
 });

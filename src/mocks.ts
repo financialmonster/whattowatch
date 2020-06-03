@@ -50,6 +50,23 @@ export const createStoreMock = (mode: string = `common`) => {
             reviews: fromJS({ id: 8, data: List()}),
             isReviewsFetching: true,
             reviewsError: null
+        }),
+        favorites: Map({
+            favorites: (mode === `special`)
+                ? fromJS([{
+                    genre: `Thriller`,
+                    id: 5,
+                    rating: 1,
+                    scoresCount: 1,
+                    description: ``,
+                    director: ``,
+                    starring: [``, ``]
+                }])
+                : List(),
+            isFavoritesFetching: true,
+            favoritesError: null,
+            isFavoriteFetching: false,
+            favoriteError: null
         })
     }
 }

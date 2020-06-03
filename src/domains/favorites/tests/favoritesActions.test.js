@@ -47,4 +47,10 @@ describe(`Favorites actions:`, () => {
             payload: {error: true}
         });
     });
+
+    it(`resetFavoriteError should return the right value`, () => {
+        expect(favoritesActions.resetFavoriteError()).toEqual({
+            type: FavoritesActionTypes.RESET_FAVORITE_ERROR
+        });
+    });
 });

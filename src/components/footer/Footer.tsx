@@ -8,7 +8,7 @@ import { Logo } from 'components/logo/Logo';
 export const Footer: FC = () => {
     const logoLinkClickHandler = useLogoLinkClick();
     const {pathname} = useLocation();
-    const isMainPage = pathname === Routes.MAIN_PAGE;
+    const isMainPage = pathname === `${process.env.PUBLIC_URL}${Routes.MAIN_PAGE}`;
 
     return (
         <footer className="page-footer">

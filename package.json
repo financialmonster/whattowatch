@@ -2,6 +2,7 @@
   "name": "whattowatch",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://financialmonster.github.io/whattowatch",
   "dependencies": {
     "@redux-saga/core": "1.1.3",
     "classnames": "2.2.6",

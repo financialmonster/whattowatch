@@ -53,4 +53,10 @@ describe(`Reviews actions:`, () => {
             payload: {error: true}
         });
     });
+
+    it(`resetReviewError should return the right value`, () => {
+        expect(reviewsActions.resetReviewError()).toEqual({
+            type: ReviewsActionTypes.RESET_REVIEW_ERROR
+        });
+    });
 });

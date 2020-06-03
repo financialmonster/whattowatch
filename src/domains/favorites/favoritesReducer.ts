@@ -41,6 +41,9 @@ const favoritesReducer = (state = initialStateImmutable, action: TFavoritesActio
             return state.set(`isFavoriteFetching`, false)
                         .set(`favoriteError`, action.payload);
 
+        case FavoritesActionTypes.RESET_FAVORITE_ERROR:
+            return state.set(`favoriteError`, null);
+
         default:
             // eslint-disable-next-line no-case-declarations,@typescript-eslint/no-unused-vars
             const x: never = action;

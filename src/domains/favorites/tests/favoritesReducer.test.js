@@ -63,4 +63,10 @@ describe(`FavoritesReducer:`, () => {
 
         expect(favoritesReducer(initialState, favoritesActions.fetchFavoriteFail({fake: true}))).toEqual(newState);
     });
+
+    it(`should return right state given action with FETCH_FAVORITE_FAIL type`, () => {
+        const newState = initialState.set(`favoriteError`, null);
+
+        expect(favoritesReducer(initialState, favoritesActions.resetFavoriteError())).toEqual(newState);
+    });
 });

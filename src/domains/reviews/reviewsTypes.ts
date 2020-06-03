@@ -44,8 +44,12 @@ type TFetchReviewFail = {
     payload: Error;
 }
 
+type TResetReviewError = {
+    type: typeof ReviewsActionTypes.RESET_REVIEW_ERROR;
+}
+
 export type TReviewsActions = TFetchReviewsRequest | TFetchReviewsSuccess | TFetchReviewsFail | TFetchReviewRequest |
-    TFetchReviewSuccess | TFetchReviewFail;
+    TFetchReviewSuccess | TFetchReviewFail | TResetReviewError;
 
 export type TReviewsState = {
     reviews: Map<string, any>;

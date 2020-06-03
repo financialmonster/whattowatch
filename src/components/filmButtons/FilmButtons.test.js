@@ -77,8 +77,8 @@ describe(`FilmButtons:`, () => {
         const myListBtn = filmButtons.find(`.btn--list`);
         myListBtn.simulate(`click`);
 
-        expect(store.getActions().length).toBe(1);
-        expect(store.getActions()[0]).toEqual(favoritesActions.fetchFavoriteRequest(5, 1));
+        expect(store.getActions().length).toBe(2);
+        expect(store.getActions()[1]).toEqual(favoritesActions.fetchFavoriteRequest(5, 1));
     });
 
     it(`click on the myList button should remove the film from the favorites list if this film is favorite`, () => {
@@ -95,7 +95,22 @@ describe(`FilmButtons:`, () => {
         const myListBtn = filmButtons.find(`.btn--list`);
         myListBtn.simulate(`click`);
 
+        expect(store.getActions().length).toBe(2);
+        expect(store.getActions()[1]).toEqual(favoritesActions.fetchFavoriteRequest(5, 0));
+    });
+
+    it(`should dispatch resetFavoriteError action after mounting`, () => {
+        const routerMiddleware = createRouterMiddleware(history);
+        const mockStore = configureStore([routerMiddleware]);
+        store = mockStore(createStoreMock(`special`));
+
+        mount(
+            <Provider store={ store }>
+                <FilmButtons />
+            </Provider>
+        );
+
         expect(store.getActions().length).toBe(1);
-        expect(store.getActions()[0]).toEqual(favoritesActions.fetchFavoriteRequest(5, 0));
+        expect(store.getActions()[0]).toEqual(favoritesActions.resetFavoriteError());
     });
 });

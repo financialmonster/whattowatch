@@ -1,4 +1,4 @@
-import React, { FC, memo, useCallback } from 'react';
+import React, { FC, memo, useCallback, useEffect } from 'react';
 import { push } from 'connected-react-router/immutable';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -6,7 +6,9 @@ import { Map } from 'immutable';
 
 import { useFetchFavorite } from 'hooks/useFetchFavorite';
 import * as promoSelectors from 'domains/promo/promoSelectors';
+import * as authSelectors from 'domains/auth/authSelectors';
 import { isPromo } from 'utils';
+import { favoritesActions } from 'domains/favorites/favoritesActions';
 import { Notification } from 'components/notification/Notification';
 
 type TFilmButtonsProps = {
@@ -18,9 +20,14 @@ export const FilmButtons: FC<TFilmButtonsProps> = memo(({playBtnClickHandler, de
     const {id} = useParams();
     const dispatch = useDispatch();
     const promo = useSelector(promoSelectors.getPromo);
+    const user = useSelector(authSelectors.getUser);
+
+    useEffect(() => {
+        dispatch(favoritesActions.resetFavoriteError());
+    }, [dispatch]);
     
     const addReviewBtnClickHandler = useCallback(() => {
-        dispatch(push(`/film/${id}/review`));
+        dispatch(push(`${process.env.PUBLIC_URL}/film/${id}/review`));
     }, [dispatch, id]);
 
     let favorite: number | Map<string, any>;
@@ -47,7 +54,7 @@ export const FilmButtons: FC<TFilmButtonsProps> = memo(({playBtnClickHandler, de
                 onClick={myListBtnClickHandler}
             >
                 <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref={(isFavorite) ? `#in-list` : `#add`}></use>
+                    <use xlinkHref={(isFavorite && user) ? `#in-list` : `#add`}></use>
                 </svg>
                 <span>My list</span>
             </button>

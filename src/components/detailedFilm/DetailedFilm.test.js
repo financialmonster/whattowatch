@@ -2,7 +2,7 @@
 jest.mock('react-router-dom', () => ({
     ...jest.requireActual('react-router-dom'),
     useParams: () => ({id: 1}),
-    useLocation: () => ({pathname: `film/1`})
+    useLocation: () => ({pathname: `${process.env.PUBLIC_URL}film/1`})
 }));
 
 import React from 'react';
