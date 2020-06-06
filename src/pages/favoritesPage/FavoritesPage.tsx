@@ -12,7 +12,7 @@ export const FavoritesPage: FC = () => {
     const user = useSelector(authSelectors.getUser);
 
     if(!user) {
-        return <Redirect to={Routes.LOGIN_PAGE} />;
+        return <Redirect to={`${process.env.PUBLIC_URL}${Routes.LOGIN_PAGE}`} />;
     }
 
     return (

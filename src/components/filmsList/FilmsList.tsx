@@ -1,13 +1,13 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 import { List, Map } from 'immutable';
 
 import { Film } from 'components/film/Film';
 
 type TFilmsListProps = {
-    films: List<Map<string, any>> | undefined
+    films: List<Map<string, any>> | undefined;
 }
 
-export const FilmsList: FC<TFilmsListProps> = React.memo(({ films }) => {
+export const FilmsList: FC<TFilmsListProps> = memo(({ films }) => {
     const filmsJSX: List<JSX.Element> =
         (films as List<Map<string, any>>).map((film) => <Film key={film.get(`id`)} film={film} />);
 

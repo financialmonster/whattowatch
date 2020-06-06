@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SimilarFilms: correctly rendered 1`] = `
+<section
+  className="catalog catalog--like-this"
+>
+  <h2
+    className="catalog__title"
+  >
+    More like this
+  </h2>
+  <div
+    className="catalog__movies-list"
+  >
+    <article
+      className="small-movie-card catalog__movies-card"
+    >
+      <div
+        className="small-movie-card__image"
+        onClick={[Function]}
+      >
+        <img
+          height="175"
+          width="280"
+        />
+      </div>
+      <h3
+        className="small-movie-card__title"
+      >
+        <a
+          className="small-movie-card__link"
+        />
+      </h3>
+    </article>
+  </div>
+</section>
+`;

@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header: correctly rendered 1`] = `
+Array [
+  <div
+    className="movie-card__bg"
+  >
+    <img />
+  </div>,
+  <h1
+    className="visually-hidden"
+  >
+    WTW
+  </h1>,
+  <header
+    className="page-header"
+  >
+    <div
+      className="logo"
+    >
+      <a
+        className="logo__link"
+        onClick={[Function]}
+        style={Object {}}
+        title=""
+      >
+        <span
+          className="logo__letter logo__letter--1"
+        >
+          W
+        </span>
+        <span
+          className="logo__letter logo__letter--2"
+        >
+          T
+        </span>
+        <span
+          className="logo__letter logo__letter--3"
+        >
+          W
+        </span>
+      </a>
+    </div>
+    <div
+      className="user-block"
+    >
+      <a
+        className="user-block__link"
+        onClick={[Function]}
+        title="To the login page"
+      >
+        Sign in
+      </a>
+    </div>
+  </header>,
+]
+`;

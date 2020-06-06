@@ -5,8 +5,8 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
 import { routerMiddleware as createRouterMiddleware } from 'connected-react-router';
-import { history } from 'init/rootReducer'; 
 
+import { history } from 'init/rootReducer'; 
 import { App } from './App';
 import { authActions } from 'domains/auth/authActions';
 import { createStoreMock } from 'mocks';

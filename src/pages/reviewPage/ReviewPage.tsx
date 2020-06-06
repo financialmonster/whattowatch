@@ -28,7 +28,7 @@ export const ReviewPage: FC = () => {
     }
 
     if(!user) {
-        return <Redirect to={Routes.LOGIN_PAGE} />;
+        return <Redirect to={`${process.env.PUBLIC_URL}${Routes.LOGIN_PAGE}`} />;
     }
 
     return (

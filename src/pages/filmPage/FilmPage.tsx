@@ -39,7 +39,7 @@ export const FilmPage: FC = () => {
     }
 
     if(!film) {
-        return <Redirect to={Routes.MAIN_PAGE} />;
+        return <Redirect to={`${process.env.PUBLIC_URL}${Routes.MAIN_PAGE}`} />;
     }
 
     const backgroundColor: string = film.get(`background_color`);

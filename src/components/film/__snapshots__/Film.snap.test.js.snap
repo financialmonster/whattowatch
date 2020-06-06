@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Film: correctly rendered 1`] = `
+<article
+  className="small-movie-card catalog__movies-card"
+>
+  <div
+    className="small-movie-card__image"
+    onClick={[Function]}
+  >
+    <img
+      height="175"
+      width="280"
+    />
+  </div>
+  <h3
+    className="small-movie-card__title"
+  >
+    <a
+      className="small-movie-card__link"
+    />
+  </h3>
+</article>
+`;

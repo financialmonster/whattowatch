@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Spinner: correctly rendered 1`] = `
+<div
+  className="sc-AxjAm fcmpGc"
+>
+  <div
+    className="sc-AxirZ fLbCRQ"
+    rotate="rotate(0deg)"
+  />
+  <div
+    className="sc-AxirZ iRnakP"
+    rotate="rotate(30deg)"
+  />
+  <div
+    className="sc-AxirZ jJDLSA"
+    rotate="rotate(60deg)"
+  />
+  <div
+    className="sc-AxirZ cfISCN"
+    rotate="rotate(90deg)"
+  />
+  <div
+    className="sc-AxirZ jYaMud"
+    rotate="rotate(120deg)"
+  />
+  <div
+    className="sc-AxirZ kCauMN"
+    rotate="rotate(150deg)"
+  />
+  <div
+    className="sc-AxirZ bbuhJx"
+    rotate="rotate(180deg)"
+  />
+  <div
+    className="sc-AxirZ RfLVX"
+    rotate="rotate(210deg)"
+  />
+  <div
+    className="sc-AxirZ iDvjl"
+    rotate="rotate(240deg)"
+  />
+  <div
+    className="sc-AxirZ fchBdo"
+    rotate="rotate(270deg)"
+  />
+  <div
+    className="sc-AxirZ fGeryM"
+    rotate="rotate(300deg)"
+  />
+  <div
+    className="sc-AxirZ eVSKan"
+    rotate="rotate(330deg)"
+  />
+</div>
+`;

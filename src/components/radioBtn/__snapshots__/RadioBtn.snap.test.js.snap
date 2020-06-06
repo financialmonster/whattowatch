@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RadioBtn: correctly rendered 1`] = `
+Array [
+  <input
+    checked={false}
+    className="rating__input"
+    disabled={true}
+    id="star-5"
+    name="rating"
+    onBlur={[Function]}
+    onChange={[Function]}
+    type="radio"
+    value={5}
+  />,
+  <label
+    className="rating__label"
+    htmlFor="star-5"
+  >
+    Rating-5
+  </label>,
+]
+`;
