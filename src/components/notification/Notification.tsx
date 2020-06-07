@@ -30,12 +30,11 @@ const NotificationWrapper = styled.div`
     background-color: black;
     opacity: 0;
     animation: ${fadeInOut} linear 5s;
+    text-align: center;
 `;
 
-export const Notification: FC<TNotificationProps> = memo(({ children }) => {
-    return (
-        <NotificationWrapper>
-            {children}
-        </NotificationWrapper>
-    );
-});
+export const Notification: FC<TNotificationProps> = memo(({ children }) => (
+    <NotificationWrapper>
+        {children}
+    </NotificationWrapper>
+));

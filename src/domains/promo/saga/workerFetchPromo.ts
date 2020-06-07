@@ -11,7 +11,7 @@ export function* workFetchPromo(): SagaIterator {
         const response: Response = yield call(api.promo.fetchPromo);
 
         if(response.status !== HttpStatusCodes.SUCCESS_STATUS_CODE) {
-            throw new Error(`Can't receive the promo film`)
+            throw new Error(`We are sorry. Promo film can't be loaded now. Please, reload the page.`)
         }
 
         const film: TFilm = yield call([response, response.json]);

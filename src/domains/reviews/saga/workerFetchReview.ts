@@ -19,9 +19,9 @@ export function* workFetchReview(action: TFetchReviewRequest): SagaIterator {
             yield put(reviewsActions.fetchReviewSuccess(id, reviews));
             yield put(push(`${process.env.PUBLIC_URL}/film/${id}`));
         } else if (response.status === HttpStatusCodes.UNAUTHORIZED_STATUS_CODE) {
-            throw new Error(`You're unauthorized. Please, sign in and retry`);
+            throw new Error(`You're unauthorized. Please, sign in and retry.`);
         } else {
-            throw new Error(`Can't save your review. Please, retry later`);
+            throw new Error(`Can't save your review. Please, reload the page and retry.`);
         } 
     } catch (err) {
         yield put(reviewsActions.fetchReviewFail(err));

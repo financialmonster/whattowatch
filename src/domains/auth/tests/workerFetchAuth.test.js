@@ -30,7 +30,9 @@ describe('WorkFetchAuth:', () => {
             .provide([[ call(api.auth.fetchAuth, `Fake`), {
                 status: HttpStatusCodes.NOT_FOUND_STATUS_CODE
             }]])
-            .put(authActions.fetchAuthFail(new Error(`Can't sign in`)))
+            .put(authActions.fetchAuthFail(new Error(
+                `We are sorry. You can't be signed in now. Please, reload the page and retry.`
+            )))
             .run();
     });
 });

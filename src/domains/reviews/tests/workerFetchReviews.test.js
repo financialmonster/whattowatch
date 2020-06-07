@@ -8,7 +8,7 @@ import { HttpStatusCodes } from 'mainConstants';
 
 describe('WorkFetchReviews:', () => {
     it(`should properly handle request scenario with response code 200`, async () => {
-        const payload = [{fake: true}, {alsoFake: true}];
+        const payload = [{ fake: true}, { alsoFake: true}];
         const action = {
             payload: 2
         }
@@ -31,7 +31,9 @@ describe('WorkFetchReviews:', () => {
             .provide([[ call(api.reviews.fetchReviews, 2), {
                 status: HttpStatusCodes.NOT_FOUND_STATUS_CODE
             }]])
-            .put(reviewsActions.fetchReviewsFail(new Error(`Can't receive the list of reviews`)))
+            .put(reviewsActions.fetchReviewsFail(new Error(
+                `We are sorry. List of reviews can't be loaded now. Please, reload the page.`
+            )))
             .run();
     });
 });

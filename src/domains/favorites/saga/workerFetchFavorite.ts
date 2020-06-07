@@ -18,9 +18,9 @@ export function* workFetchFavorite(action: TFetchFavoriteRequest): SagaIterator 
             yield put(favoritesActions.fetchFavoriteSuccess(favorites));
             yield put(favoritesActions.fetchFavoritesRequest());
         } else if (response.status === HttpStatusCodes.UNAUTHORIZED_STATUS_CODE) {
-            throw new Error(`You're unauthorized. Please, sign in and retry`);
+            throw new Error(`You're unauthorized. Please, sign in and retry.`);
         } else {
-            throw new Error(`Can't save the film to the favorites list. Please, retry later`);
+            throw new Error(`We are sorry. The film can't be marked as favorite. Please, reload the page and retry.`);
         }     
     } catch(err) {
         yield put(favoritesActions.fetchFavoriteFail(err));

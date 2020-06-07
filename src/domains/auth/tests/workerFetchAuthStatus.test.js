@@ -31,7 +31,7 @@ describe(`WorkFetchAuthStatus:`, () => {
             .provide([[ call(api.auth.fetchAuthStatus), {
                 status: HttpStatusCodes.NOT_FOUND_STATUS_CODE
             } ]])
-            .put(authActions.fetchAuthStatusFail(new Error(`Can't check auth status`)))
+            .put(authActions.fetchAuthStatusFail(new Error(`Authorization failed. Please, reload the page.`)))
             .run();
     });
 });

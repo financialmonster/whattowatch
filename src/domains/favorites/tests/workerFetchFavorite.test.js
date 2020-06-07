@@ -38,7 +38,7 @@ describe('workFetchFavorite:', () => {
             .provide([[ call(api.favorites.fetchFavorite, 1, 0), {
                 status: HttpStatusCodes.UNAUTHORIZED_STATUS_CODE
             }]])
-            .put(favoritesActions.fetchFavoriteFail(new Error(`You're unauthorized. Please, sign in and retry`)))
+            .put(favoritesActions.fetchFavoriteFail(new Error(`You're unauthorized. Please, sign in and retry.`)))
             .run();
     });
 
@@ -54,7 +54,9 @@ describe('workFetchFavorite:', () => {
             .provide([[ call(api.favorites.fetchFavorite, 1, 0), {
                 status: HttpStatusCodes.NOT_FOUND_STATUS_CODE
             }]])
-            .put(favoritesActions.fetchFavoriteFail(new Error(`Can't save the film to the favorites list. Please, retry later`)))
+            .put(favoritesActions.fetchFavoriteFail(new Error(
+                `We are sorry. The film can't be marked as favorite. Please, reload the page and retry.`
+            )))
             .run();
     });
 });

@@ -61,7 +61,7 @@ describe(`AuthReducer:`, () => {
     it(`should return right state given action with FETCH_AUTH_STATUS_FAIL type`, () => {
         const newState = initialState.set(`user`, null)
                                     .set(`isAuthStatusFetching`, false)
-                                    .set(`authStatusError`, { fake: true });
+                                    .set(`authStatusError`, { fake: true});
 
         expect(authReducer(initialState, authActions.fetchAuthStatusFail({ fake: true }))).toEqual(newState);
     });
@@ -70,6 +70,12 @@ describe(`AuthReducer:`, () => {
         const newState = initialState.set(`user`, null)
                                     .set(`isAuthStatusFetching`, false);
 
-        expect(authReducer(initialState, authActions.authStatusAnauthorized())).toEqual(newState);
+        expect(authReducer(initialState, authActions.authStatusAnauthorized({fake: true}))).toEqual(newState);
+    });
+
+    it(`should return right state given action with RESET_AUTH_ERROR type`, () => {
+        const newState = initialState.set(`authError`, null);
+
+        expect(authReducer(initialState, authActions.resetAuthError())).toEqual(newState);
     });
 });

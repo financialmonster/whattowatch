@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import { useParams, Redirect } from 'react-router-dom';
-import { Map } from 'immutable';
 
 import { Header } from 'components/header/Header';
 import { Spinner } from 'components/spinner/Spinner';
@@ -10,6 +9,7 @@ import { Footer } from 'components/footer/Footer';
 import { useFetchFilms } from 'hooks/useFetchFilms';
 import { DetailedFilm } from 'components/detailedFilm/DetailedFilm';
 import { SimilarFilms } from 'components/similarFilms/SimilarFilms';
+import { Message } from 'components/message/Message';
 
 export const FilmPage: FC = () => {
     const {id} = useParams();
@@ -29,7 +29,9 @@ export const FilmPage: FC = () => {
         return (
             <div className="movie-card__hero">
                 <Header />
-                <div>Error</div>
+                <Message>
+                    {(filmsError as Error).message}
+                </Message>
             </div>
         );
     }
@@ -47,7 +49,7 @@ export const FilmPage: FC = () => {
         backgroundImage: `linear-gradient(-180deg, ${backgroundColor} 0%, ${backgroundColor} 100%)`
     }
     const sectionStyle = {
-        backgroundColor
+        backgroundColor:backgroundColor
     }
 
     return (

@@ -4,6 +4,7 @@ import { Map } from 'immutable';
 import { Promo } from 'components/promo/Promo';
 import { Spinner } from 'components/spinner/Spinner';
 import { useFetchPromo } from 'hooks/useFetchPromo';
+import { Message } from 'components/message/Message';
 
 export const PromoContainer: FC = () => {
     const {isPromoFetching, promoError, promo} = useFetchPromo();
@@ -14,7 +15,11 @@ export const PromoContainer: FC = () => {
     }
 
     if(promoError) {
-        return <div>error</div>;
+        return (
+            <Message>
+                {(promoError as Error).message}
+            </Message>
+        );
     }
 
     return <Promo promo={verifiedPromo} />;

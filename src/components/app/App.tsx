@@ -13,13 +13,15 @@ export const App: FC = () => {
     useFetchAuthStatus();
 
     return (
-        <Switch>
-            <Route path={`${process.env.PUBLIC_URL}${Routes.MAIN_PAGE}`} component={MainPage} exact />
-            <Route path={`${process.env.PUBLIC_URL}${Routes.LOGIN_PAGE}`} component={LoginPage} exact />
-            <Route path={`${process.env.PUBLIC_URL}${Routes.FILM_PAGE}`} component={FilmPage} exact />
-            <Route path={`${process.env.PUBLIC_URL}${Routes.REVIEW_PAGE}`} component={ReviewPage} exact />
-            <Route path={`${process.env.PUBLIC_URL}${Routes.FAVORITES_PAGE}`} component={FavoritesPage} exact />
-            <Redirect to={`${process.env.PUBLIC_URL}${Routes.MAIN_PAGE}`} />
-        </Switch>
+        <>
+            <Switch>
+                <Route path={`${process.env.PUBLIC_URL}${Routes.MAIN_PAGE}`} component={MainPage} exact />
+                <Route path={`${process.env.PUBLIC_URL}${Routes.LOGIN_PAGE}`} component={LoginPage} exact />
+                <Route path={`${process.env.PUBLIC_URL}${Routes.FILM_PAGE}`} component={FilmPage} exact />
+                <Route path={`${process.env.PUBLIC_URL}${Routes.REVIEW_PAGE}`} component={ReviewPage} exact />
+                <Route path={`${process.env.PUBLIC_URL}${Routes.FAVORITES_PAGE}`} component={FavoritesPage} exact />
+                <Redirect to={`${process.env.PUBLIC_URL}${Routes.MAIN_PAGE}`} />
+            </Switch>
+        </>
     );
 }

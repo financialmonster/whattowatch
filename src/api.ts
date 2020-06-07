@@ -18,7 +18,6 @@ const api = {
             body: JSON.stringify(userData),
             credentials:`include`
         }),
-        
         fetchAuthStatus: () => fetch(`${BASE_URL}/login`, {
             method: `GET`,
 			headers: {

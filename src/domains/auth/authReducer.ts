@@ -45,6 +45,9 @@ const authReducer = (state = initialStateImmutable, action: TAuthActions): typeo
             return state.set(`user`, null)
                         .set(`isAuthStatusFetching`, false);
 
+        case AuthActionTypes.RESET_AUTH_ERROR:
+            return state.set(`authError`, null);
+
         default:
             // eslint-disable-next-line no-case-declarations,@typescript-eslint/no-unused-vars
             const x: never = action;

@@ -12,7 +12,7 @@ export function* workFetchReviews(action: TFetchReviewsRequest): SagaIterator {
         const response: Response = yield call(api.reviews.fetchReviews, action.payload);
 
         if(response.status !== HttpStatusCodes.SUCCESS_STATUS_CODE) {
-            throw new Error(`Can't receive the list of reviews`);
+            throw new Error(`We are sorry. List of reviews can't be loaded now. Please, reload the page.`);
         }
 
         const reviews: TReviews = yield call([response, response.json]);

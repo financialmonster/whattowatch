@@ -5,6 +5,7 @@ import { useFetchReviews } from 'hooks/useFetchReviews';
 import { Spinner } from 'components/spinner/Spinner';
 import { isReviews }  from 'utils';
 import { Review } from 'components/review/Review';
+import { Message } from 'components/message/Message';
 
 type TReviewsTabProps = {
     id: number;
@@ -18,7 +19,11 @@ export const ReviewsTab: FC<TReviewsTabProps> = memo(({ id }) => {
     }
 
     if(reviewsError) {
-        return <div>Error</div>;
+        return (
+            <Message>
+                {(reviewsError as Error).message}
+            </Message>
+        );
     }
 
     let reviewsJSX: List<JSX.Element> | undefined;
@@ -45,7 +50,11 @@ export const ReviewsTab: FC<TReviewsTabProps> = memo(({ id }) => {
                     </div>
                 </>
             }
-            {(!reviewsJSX) && <div>No reviews yet. Your will be the first!</div>}
+            {(!reviewsJSX) && 
+                <Message>
+                    No reviews yet. Your will be the first!
+                </Message>
+            }
         </div>
     );
 });

@@ -24,7 +24,9 @@ describe('workFetchFilms:', () => {
             .provide([[ call(api.films.fetchFilms), {
                 status: HttpStatusCodes.NOT_FOUND_STATUS_CODE
             }]])
-            .put(filmsActions.fetchFilmsFail(new Error(`Can't receive the list of films`)))
+            .put(filmsActions.fetchFilmsFail(new Error(
+                `We are sorry. List of films can't be loaded now. Please, reload the page.`
+            )))
             .run();
     });
 });

@@ -1,7 +1,7 @@
 import { authActions } from 'domains/auth/authActions';
 import { AuthActionTypes } from 'domains/auth/authConstants';
 
-describe(`Films actions:`, () => {
+describe(`Auth actions:`, () => {
     it(`fetchAuthRequest should return the right value`, () => {
         expect(authActions.fetchAuthRequest({alsoFake: true})).toEqual({
             type: AuthActionTypes.FETCH_AUTH_REQUEST,
@@ -48,6 +48,12 @@ describe(`Films actions:`, () => {
     it(`authStatusAnauthorized should return the right value`, () => {
         expect(authActions.authStatusAnauthorized()).toEqual({
             type: AuthActionTypes.AUTH_STATUS_UNAUTHORIZED
+        });
+    });
+
+    it(`resetAuthError should return the right value`, () => {
+        expect(authActions.resetAuthError()).toEqual({
+            type: AuthActionTypes.RESET_AUTH_ERROR
         });
     });
 });

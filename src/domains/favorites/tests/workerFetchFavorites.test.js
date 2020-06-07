@@ -24,7 +24,9 @@ describe('WorkFetchFavorites:', () => {
             .provide([[ call(api.favorites.fetchFavorites), {
                 status: HttpStatusCodes.NOT_FOUND_STATUS_CODE
             }]])
-            .put(favoritesActions.fetchFavoritesFail(new Error(`Can't receive the list of favorite films`)))
+            .put(favoritesActions.fetchFavoritesFail(new Error(
+                `We are sorry. List of films can't be loaded now. Please, reload the page.`
+            )))
             .run();
     });
 });

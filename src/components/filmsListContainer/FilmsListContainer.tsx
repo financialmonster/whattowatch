@@ -8,6 +8,7 @@ import { FilmsList } from 'components/filmsList/FilmsList';
 import * as filmsSelectors from 'domains/films/filmsSelectors';
 import { useFilmsListBatch } from 'hooks/useFilmsListBatch';
 import { isFilms } from 'utils';
+import { Message } from 'components/message/Message';
 
 export const FilmsListContainer: FC = () => {
     const {isFilmsFetching, filmsError, films} = useFetchFilms();
@@ -28,21 +29,34 @@ export const FilmsListContainer: FC = () => {
     }
 
     if(filmsError) {
-        return <div>Error</div>;
+        return (
+            <Message>
+                {(filmsError as Error).message}
+            </Message>
+        );
     }
 
     return (
         <>
-            <FilmsList films={ batchedFilms } />
-            <div className="catalog__more">
-                {(hasMoreFilms) &&
-                    <button className="catalog__button" type="button" onClick={showMoreBtnClickHandler}
-                        title="Show more"
-                    >
-                        Show more
-                    </button>
-                }
-            </div>
+            {(isFilms(films)) &&
+                <>
+                    <FilmsList films={batchedFilms} />
+                    <div className="catalog__more">
+                        {(hasMoreFilms) &&
+                            <button className="catalog__button" type="button" onClick={showMoreBtnClickHandler}
+                                title="Show more"
+                            >
+                                Show more
+                            </button>
+                        }
+                    </div>
+                </>
+            }
+            {!(isFilms(films)) &&
+                <Message>
+                    We are sorry. There aren't available films now.
+                </Message>
+            }
         </>
     );
 }

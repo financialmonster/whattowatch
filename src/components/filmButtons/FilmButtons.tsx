@@ -65,12 +65,14 @@ export const FilmButtons: FC<TFilmButtonsProps> = memo(({playBtnClickHandler, de
                     Add review
                 </a> 
             }
-            {(isFavoriteFetching || favoriteError) &&
+            {(isFavoriteFetching) &&
                 <Notification>
-                    {(isFavoriteFetching)
-                        ? `Saving to the favorites list... Please, wait`
-                        : (favoriteError as Error).message
-                    }
+                    Saving to the favorites list... Please, wait.
+                </Notification>
+            }
+            {(favoriteError) &&
+                <Notification>
+                    {(favoriteError as Error).message}
                 </Notification>
             }
         </>

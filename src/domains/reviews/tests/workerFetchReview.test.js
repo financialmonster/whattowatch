@@ -39,7 +39,7 @@ describe('WorkFetchReview:', () => {
             .provide([[ call(api.reviews.fetchReview, 1, `Fake`), {
                 status: HttpStatusCodes.UNAUTHORIZED_STATUS_CODE
             }]])
-            .put(reviewsActions.fetchReviewFail(new Error(`You're unauthorized. Please, sign in and retry`)))
+            .put(reviewsActions.fetchReviewFail(new Error(`You're unauthorized. Please, sign in and retry.`)))
             .run();
     });
 
@@ -55,7 +55,9 @@ describe('WorkFetchReview:', () => {
             .provide([[ call(api.reviews.fetchReview, 1, `Fake`), {
                 status: HttpStatusCodes.NOT_FOUND_STATUS_CODE
             }]])
-            .put(reviewsActions.fetchReviewFail(new Error(`Can't save your review. Please, retry later`)))
+            .put(reviewsActions.fetchReviewFail(new Error(
+                `Can't save your review. Please, reload the page and retry.`
+            )))
             .run();
     });
 });

@@ -17,7 +17,7 @@ export function* workFetchAuthStatus(): SagaIterator {
         } else if (response.status === HttpStatusCodes.UNAUTHORIZED_STATUS_CODE) {
             yield put(authActions.authStatusAnauthorized());
         } else {
-            throw new Error(`Can't check auth status`);
+            throw new Error(`Authorization failed. Please, reload the page.`);
         }
     } catch (err) {
         yield put(authActions.fetchAuthStatusFail(err));

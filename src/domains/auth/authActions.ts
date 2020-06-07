@@ -36,5 +36,9 @@ export const authActions = {
 
     authStatusAnauthorized: (): TAuthActions => ({
         type: AuthActionTypes.AUTH_STATUS_UNAUTHORIZED
-    })
+    }),
+
+    resetAuthError: (): TAuthActions => ({
+        type: AuthActionTypes.RESET_AUTH_ERROR
+    }),
 }

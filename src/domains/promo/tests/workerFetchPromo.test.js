@@ -22,7 +22,9 @@ describe('workFetchPromo:', () => {
             .provide([[ call(api.promo.fetchPromo), {
                 status: HttpStatusCodes.NOT_FOUND_STATUS_CODE
             }]])
-            .put(promoActions.fetchPromoFail(new Error(`Can't receive the promo film`)))
+            .put(promoActions.fetchPromoFail(new Error(
+                `We are sorry. Promo film can't be loaded now. Please, reload the page.`
+            )))
             .run();
     });
 });

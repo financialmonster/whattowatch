@@ -38,8 +38,12 @@ type TAuthStatusAnauthorized = {
     type: typeof AuthActionTypes.AUTH_STATUS_UNAUTHORIZED
 }
 
+type TResetAuthError = {
+    type: typeof AuthActionTypes.RESET_AUTH_ERROR
+}
+
 export type TAuthActions = TFetchAuthRequest | TFetchAuthSuccess | TFetchAuthFail | TFetchAuthStatusRequest
-    | TFetchAuthStatusSuccess | TFetchAuthStatusFail | TAuthStatusAnauthorized;
+    | TFetchAuthStatusSuccess | TFetchAuthStatusFail | TAuthStatusAnauthorized | TResetAuthError;
 
 export type TAuthState = {
     user: null | Map<string, any>;

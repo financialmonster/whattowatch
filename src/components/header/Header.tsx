@@ -68,7 +68,11 @@ export const Header: FC<THeaderProps> = ({film}) => {
     if(isAuthStatusFetching) {
         userBlockJSX = <div className="user-block">Authorization...</div>;
     } else if(authStatusError) {
-        userBlockJSX = <div className="user-block">Authorization failed</div>;
+        userBlockJSX = (
+            <div className="user-block">
+                {(authStatusError as Error).message}
+            </div>
+        );
     } else if(user) {
         avatar = (user as Map<string,any>).get(`avatar_url`);
 
@@ -80,8 +84,8 @@ export const Header: FC<THeaderProps> = ({film}) => {
             <div className="user-block">
                 <div className="user-block__avatar">
                     <img src={`https://htmlacademy-react-3.appspot.com/${avatar}`} onClick={avatarImgClickHandler}
-                        height="63" alt="User avatar" width="63" title={(isFavoritesPage) ? `` : `To the favorites page`}
-                        style={avatarImgStyle}
+                        height="63" alt="User avatar" width="63"
+                        title={(isFavoritesPage) ? `` : `To the favorites page`} style={avatarImgStyle}            
                     />
                 </div>
             </div>

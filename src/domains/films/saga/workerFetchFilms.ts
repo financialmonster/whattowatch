@@ -11,7 +11,7 @@ export function* workFetchFilms(): SagaIterator {
         const response: Response = yield call(api.films.fetchFilms);
 
         if(response.status !== HttpStatusCodes.SUCCESS_STATUS_CODE) {
-            throw new Error(`Can't receive the list of films`);
+            throw new Error(`We are sorry. List of films can't be loaded now. Please, reload the page.`);
         }
 
         const films: TFilms = yield call([response, response.json]);

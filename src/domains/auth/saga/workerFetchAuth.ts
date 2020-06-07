@@ -12,7 +12,7 @@ export function* workFetchAuth(action: TFetchAuthRequest): SagaIterator {
         const response: Response = yield call(api.auth.fetchAuth, action.payload);
 
         if(response.status !== HttpStatusCodes.SUCCESS_STATUS_CODE) {
-            throw new Error(`Can't sign in`);
+            throw new Error(`We are sorry. You can't be signed in now. Please, reload the page and retry.`);
         }
 
         const user: TUser = yield call([response, response.json]);
