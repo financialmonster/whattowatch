@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/whattowatch/static/js/main.478990b4.chunk.js",
-    "main.js.map": "/whattowatch/static/js/main.478990b4.chunk.js.map",
+    "main.js": "/whattowatch/static/js/main.33d621f4.chunk.js",
+    "main.js.map": "/whattowatch/static/js/main.33d621f4.chunk.js.map",
     "runtime-main.js": "/whattowatch/static/js/runtime-main.eb27ced4.js",
     "runtime-main.js.map": "/whattowatch/static/js/runtime-main.eb27ced4.js.map",
-    "static/js/2.beb87c0b.chunk.js": "/whattowatch/static/js/2.beb87c0b.chunk.js",
-    "static/js/2.beb87c0b.chunk.js.map": "/whattowatch/static/js/2.beb87c0b.chunk.js.map",
+    "static/js/2.ff78ccf4.chunk.js": "/whattowatch/static/js/2.ff78ccf4.chunk.js",
+    "static/js/2.ff78ccf4.chunk.js.map": "/whattowatch/static/js/2.ff78ccf4.chunk.js.map",
     "index.html": "/whattowatch/index.html",
-    "precache-manifest.4fa041986ffa9f93fce67e2f63051ab2.js": "/whattowatch/precache-manifest.4fa041986ffa9f93fce67e2f63051ab2.js",
+    "precache-manifest.1dcddc82b560d298cbdcc9f9ed715a3b.js": "/whattowatch/precache-manifest.1dcddc82b560d298cbdcc9f9ed715a3b.js",
     "service-worker.js": "/whattowatch/service-worker.js",
-    "static/js/2.beb87c0b.chunk.js.LICENSE.txt": "/whattowatch/static/js/2.beb87c0b.chunk.js.LICENSE.txt"
+    "static/js/2.ff78ccf4.chunk.js.LICENSE.txt": "/whattowatch/static/js/2.ff78ccf4.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.eb27ced4.js",
-    "static/js/2.beb87c0b.chunk.js",
-    "static/js/main.478990b4.chunk.js"
+    "static/js/2.ff78ccf4.chunk.js",
+    "static/js/main.33d621f4.chunk.js"
   ]
 }
